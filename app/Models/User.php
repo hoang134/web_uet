@@ -23,6 +23,7 @@ class User extends Authenticatable
         // 'name',
         // 'email',
         // 'password',
+        'id',
         'tendangnhap',
         'Hoten',
         'Sodienthoai',
@@ -37,6 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        'id',
         'Hoten',
         'Sodienthoai',
         'Email',
@@ -52,16 +54,16 @@ class User extends Authenticatable
 
     public function questions()
     {
-        return $this->hasMany(Question::class,'user_id','id');
+        return $this->hasMany(Question::class, 'user_id', 'id');
     }
 
-    public function messengerTo()
-    {
-        return $this->hasMany(Messenger::class,'user_id_to','id');
-    }
-
-    public function messengerFrom()
-    {
-        return $this->hasMany(Messenger::class,'user_id_from','id');
-    }
+//    public function messengerTo()
+//    {
+//        return $this->hasMany(Messenger::class,'user_id_to','id');
+//    }
+//
+//    public function messengerFrom()
+//    {
+//        return $this->hasMany(Messenger::class,'user_id_from','id');
+//    }
 }

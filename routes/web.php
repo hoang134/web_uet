@@ -50,37 +50,45 @@ Route::get('home/question','App\Http\Controllers\Home\HomeController@question')-
 Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::post('question','App\Http\Controllers\Student\StudentController@createQuestion');
     Route::get('my/question','App\Http\Controllers\Student\StudentController@myQuestion')->name('student.my.question');
-    Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
 
-    Route::get('chose/service','App\Http\Controllers\Student\ServiceController@service');
+    Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
+    Route::post('create/requite/service/{id}','App\Http\Controllers\Student\ServiceController@createRequiteService')->name('student.requite.service');
 
     Route::get('messenger','App\Http\Controllers\Student\MessengerController@messenger');
     Route::post('reply/messenger','App\Http\Controllers\Student\MessengerController@replyMessenger');
 });
 
 
-// Route::prefix('admin')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
-//Route::get('question','App\Http\Controllers\Admin\QuestionController@index')->name('admin.question');
-//     Route::post('question/reply/{id}','App\Http\Controllers\Admin\QuestionController@questionReply');
-//     Route::get('question/get/reply/{id}','App\Http\Controllers\Admin\QuestionController@getQuestionReply');
-//     Route::get('create/question','App\Http\Controllers\Admin\QuestionController@createQuestion')->name('question.create');
-//     Route::post('save/question','App\Http\Controllers\Admin\QuestionController@saveQuestion')->name('question.save');
-//     Route::get('change/type/question/{id}','App\Http\Controllers\Admin\QuestionController@changeTypeQuestion')->name('question.change.type');
-//     Route::post('edit/question/{id}','App\Http\Controllers\Admin\QuestionController@editQuestion')->name('question.edit');
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
+    Route::get('question','QuestionController@index')->name('admin.question');
+    Route::post('question/reply/{id}','QuestionController@questionReply');
+    Route::get('question/get/reply/{id}','QuestionController@getQuestionReply');
+    Route::get('create/question','QuestionController@createQuestion')->name('question.create');
+    Route::post('save/question','QuestionController@saveQuestion')->name('question.save');
+    Route::get('change/type/question/{id}','QuestionController@changeTypeQuestion')->name('question.change.type');
+    Route::post('edit/question/{id}','QuestionController@editQuestion')->name('question.edit');
 
-//     Route::get('messengers','App\Http\Controllers\Admin\MessengerController@index');
-//     Route::get('detail/messengers/{id}','App\Http\Controllers\Admin\MessengerController@detailMesenger');
-//     Route::post('reply/messenger/{id}','App\Http\Controllers\Admin\MessengerController@replyMessenger');
+    Route::prefix('messengers')->name('messengers.')->group(function () {
+        Route::get('','MessengerController@index')->name('index');
+        Route::get('/{tendangnhap}','MessengerController@detail')->name('detail');
+        Route::post('reply/{tendangnhap}','MessengerController@reply')->name('reply');
+    });
 
-//     Route::get('service','App\Http\Controllers\Admin\ServiceController@index');
-//     Route::get('create/service','App\Http\Controllers\Admin\ServiceController@createService');
-//     Route::post('save/service','App\Http\Controllers\Admin\ServiceController@saveService');
-//     Route::get('config/service','App\Http\Controllers\Admin\ServiceController@Configservice');
+    Route::get('service','ServiceController@index')->name('service.index');
+    Route::get('create/service','ServiceController@createService');
+    Route::post('save/service','ServiceController@saveService')->name('service.save');
+    Route::get('{id}/edit','ServiceController@editService')->name('service.edit');
+    Route::put('{id}/update','ServiceController@updateService')->name('service.update');
 
-//     Route::get('/edit-infomation','App\Http\Controllers\Admin\InfomationController@edit_infomation')->name('edit.infomation');
-//     Route::get('/edit-infomation-cocau','App\Http\Controllers\Admin\InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
-//     Route::get('/edit-infomation-chucnang','App\Http\Controllers\Admin\InfomationController@edit_infomation_chucnang')->name('edit.infomation.chucnang');
-//     Route::get('/edit-infomation-logo','App\Http\Controllers\Admin\InfomationController@edit_infomation_logo')->name('edit.logo');
-//     Route::post('/save-infomation','App\Http\Controllers\Admin\InfomationController@save_infomation')->name('save.infomation');
+    Route::get('/edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
+    Route::get('/edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
+    Route::get('/edit-infomation-chucnang','InfomationController@edit_infomation_chucnang')->name('edit.infomation.chucnang');
+    Route::get('/edit-infomation-logo','InfomationController@edit_infomation_logo')->name('edit.logo');
+    Route::post('/save-infomation','InfomationController@save_infomation')->name('save.infomation');
 
-// });
+});
+Route::get('clear-cache-all', function() {
+    Artisan::call('cache:clear');
+
+    dd("Cache Clear All");
+});
