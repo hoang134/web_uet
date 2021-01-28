@@ -5,13 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class CetStudentAcc extends Model
 {
     use HasFactory;
-
-
-     public function fields()
-    {
-        return $this->hasMany(Fields::class,'service_id','id');
-    }
+    const TT_CHUA_ACTIVE = "0";
+    const TT_DA_ACTIVE = "1";
 }

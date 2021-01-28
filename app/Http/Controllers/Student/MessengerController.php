@@ -12,11 +12,11 @@ class MessengerController extends Controller
 {
     public function messenger()
     {
-        $messengers = DB::table('messengers')->where('user_id_from',Auth::user()->id)
-            ->orWhere('user_id_to',Auth::user()->id)->get();
+        $messengers = DB::table('messengers')->where('user_from', Auth::user()->id)
+            ->orWhere('user_to', Auth::user()->tendangnhap)->get();
 
-        return view('messengers.index',[
-            'messengers'=>$messengers
+        return view('messengers.index', [
+            'messengers' => $messengers
         ]);
     }
 
