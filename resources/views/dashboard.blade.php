@@ -139,7 +139,7 @@
                                 <li><a href="/student/my/question">Trao đổi riêng</a></li>
                             </ul>
                         </li>
-                        <li><a href="/student/messenger">Tin nhắn</a></li>
+                        <li><a href="/student/messengers">Tin nhắn</a></li>
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
@@ -320,7 +320,7 @@
     <script src="{{asset('js/libs3/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('script')
-    
+
     @if(Session::has('success'))
         <script type="text/javascript">
             toastr.success("{!!Session::get('success')!!}");

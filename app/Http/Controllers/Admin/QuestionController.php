@@ -16,14 +16,12 @@ class QuestionController extends Controller
     {
         $questions = DB::table('questions')->orderBy('created_at','desc')->get();
         //dd($questions->first()->id);
-
-
         return view('admin.question.question',[
             'questions'=>$questions
         ]);
     }
 
-    public function questionReply(Request $request)
+    public function reply(Request $request)
     {
         $question = Question::find($request->id);
         if ($question->questionReply == null)
@@ -38,8 +36,6 @@ class QuestionController extends Controller
             DB::table('question_replies')->where('question_id',$question->id)->update(['content'=>"$request->question"]);
 
         }
-
-
     }
 
     public function getQuestionReply(Request $request)
@@ -63,13 +59,13 @@ class QuestionController extends Controller
        ";
     }
 
-    public function createQuestion()
+    public function create()
     {
 
         return view('admin.question.add-edit-question');
     }
 
-    public function saveQuestion(Request $request)
+    public function save(Request $request)
     {
        // dd($request->all());
         $question = new Question();
@@ -87,7 +83,7 @@ class QuestionController extends Controller
 
     }
 
-    public function changeTypeQuestion(Request $request)
+    public function changeType(Request $request)
     {
         $question = Question::find($request->id);
         if($question->type == Question::QUESTION_PUBLIC)
@@ -102,7 +98,7 @@ class QuestionController extends Controller
         }
     }
 
-    public function editQuestion(Request $request)
+    public function edit(Request $request)
     {
         $question = Question::find($request->id);
         $question->content = $request->question;

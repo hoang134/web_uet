@@ -24,7 +24,7 @@
                         <ul class="contacts">
                             @foreach($listUserTos as $user)
                                 <li class="active">
-                                    <a href="{{ route('messengers.detail', $user->user_to) }}">
+                                    <a href="{{ route('admin.messengers.detail', $user->user_to) }}">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
                                                 <img src="{{asset('images/1.png')}}">

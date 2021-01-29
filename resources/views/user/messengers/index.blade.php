@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('dashboard')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -11,7 +11,7 @@
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
-                                <span>Chat with {{\Illuminate\Support\Facades\Auth::user()->Hoten}}</span>
+                                <span>Chat with Khalid</span>
                                 <p>1767 Messages</p>
                             </div>
                         </div>
@@ -37,7 +37,6 @@
                                     <!-- <span class="msg_time">{{$messenger->created_at}}</span> -->
                                     </div>
                                 </div>
-
                             @else
                                 <div class="d-flex justify-content-end mb-4">
                                     <div class="msg_cotainer_send">
@@ -50,20 +49,20 @@
                                 </div>
                             @endif
                         @endforeach
-                        <div id="newMessenger">
+                            <div id="newMessenger">
 
-                        </div>
+                            </div>
                     </div>
                     <div class="card-footer">
                         <form id="Form-data">
                             @csrf
                             <div class="input-group">
                                 <div class="input-group-append">
-                                    <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+                                    <span class="input-group-text attach_btn"><i class="fas fa-paperclip" style="color: gray;"></i></span>
                                 </div>
-                                <textarea id ="messenger" name="messenger" class="form-control type_msg" placeholder="Nhập tin nhắn..."></textarea>
+                                <textarea id = "messenger" name="messenger" class="form-control type_msg" placeholder="Nhập tin nhắn..."></textarea>
                                 <div class="input-group-append">
-                                    <span class="input-group-text send_btn"><button id="submit" data-user ="{{$user_from}}" type="submit">gửi</button></span>
+                                    <span class="input-group-text send_btn" style="background-color: #ccc;"><button id="submit" type="submit">gửi</button></span>
                                 </div>
                             </div>
                         </form>
@@ -78,15 +77,14 @@
         $(document).ready(function () {
             $('#submit').click(function (e) {
                 e.preventDefault();
-                let userFrom =$(this).data('user');
+                let idUser =$(this).data('id');
                 $.ajax({
                     type:"POST",
-                    url:"/admin/messengers/reply/"+userFrom,
+                    url:"/student/messengers/reply",
                     data:$('#Form-data').serialize(),
-                    success:function (data){
+                    success:function (data) {
                         $('#newMessenger').append(data);
                         $('#messenger').val(' ');
-
                     }
                 });
             });

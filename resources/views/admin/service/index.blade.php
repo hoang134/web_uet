@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
     <h3>Danh sách dịch vụ</h3>
-    <a class="btn btn-success mt-3" href="/admin/create/service">Tạo dịch vụ</a>
+    <a class="btn btn-success mt-3" href="{{route('admin.service.create')}}">Tạo dịch vụ</a>
 
     <table class="table table-striped mt-5">
         <thead>
@@ -20,7 +20,7 @@
                 <td>{{ $service->fee }}</td>
                 <td>
                     <div>
-                        <a href="{{ route('service.edit', $service->id) }}">
+                        <a href="{{ route('admin.service.edit', $service->id) }}">
                             <i class="fa fa-edit"></i>
                         </a>
                         <i class="fa fa-trash text-danger"></i>
