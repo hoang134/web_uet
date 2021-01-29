@@ -11,7 +11,7 @@
 </div>
 <div class="col-lg-12 mb-4">
     <div class="col-sm-3 com-w3ls">
-        <a href="/admin/create/question"><h4>Tạo câu hỏi</h4></a>
+        <a href="{{route('admin.question.create')}}"><h4>Tạo câu hỏi</h4></a>
     </div>
   <!-- Simple Tables -->
   <div class="card">
@@ -113,10 +113,11 @@
 
 @section('script')
 <script>
+
     function getData(id) {
         $.ajax({
             type:'GET',
-            url:"/admin/question/get/reply/"+id,
+            url:"/admin/question/get/reply/" + id,
             success: function (data) {
                 $('.question-'+id).html(data);
                 $('.input-'+id).val('');
@@ -127,16 +128,17 @@
     let idQestion;
     $(document).on('click',".reply",function() {
         idQestion = $(this).data('id');
-        console.log(idQestion);
-      $("#"+idQestion).toggle();
+
+        $("#"+idQestion).toggle();
     });
 
     $('.submit').click(function (e) {
         $('#'+idQestion).css('display','none' );
         e.preventDefault();
+
         $.ajax({
             type:'POST',
-            url:"/admin/question/reply/"+idQestion,
+            url:"/admin/question/reply/" + idQestion,
             data:$("#form-"+idQestion).serialize(),
             success: function () {
                 getData(idQestion);
@@ -147,7 +149,7 @@
             idQestion = $(this).data('id');
             $.ajax({
                 type:'GET',
-                url:'/admin/change/type/question/'+idQestion,
+                url:"/admin/question/change/type/" + idQestion ,
                 success:function () {
                     getData(idQestion);
                 }
@@ -160,7 +162,7 @@
     $('.save-data').click(function () {
         $.ajax({
             type:'POST',
-            url:'/admin/edit/question/'+idQestion,
+            url:"/admin/question/save/"+idQestion,
             data:$('#form-modal').serialize(),
             success:function () {
                 getData(idQestion);

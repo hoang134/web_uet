@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="card-title">Tạo yêu cầu cho dịch vụ</h3>
-    <form class="mt-5" action="{{ route('service.save') }}" method="post">
+    <form class="mt-5" action="{{ route('admin.service.save') }}" method="post">
         @csrf
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>
