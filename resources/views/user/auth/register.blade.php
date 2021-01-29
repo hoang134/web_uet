@@ -49,7 +49,7 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="email" name="email" class="form-control input_pass" value="" placeholder="Email">
+                            <input type="email" name="Email" class="form-control input_pass" value="" placeholder="Email">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">

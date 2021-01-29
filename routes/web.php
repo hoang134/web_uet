@@ -41,11 +41,12 @@ Route::get('cet-infomation-chucnang','App\Http\Controllers\Home\CetInfomationCon
 //Thông tin về các kỳ thi,sự kiện
 Route::get('cet-notification-events','App\Http\Controllers\Home\CetNotificationController@cet_notification_events')->name('cet.notification.event');
 Route::get('cet-notification-exams','App\Http\Controllers\Home\CetNotificationController@cet_notification_exams')->name('cet.notification.exam');
-Route::get('cet-notification-exam-detail/{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
-Route::get('question-detail/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
+Route::get('cet-notification-exam-detail/ma-ky-thi-{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
+
 //
 Route::get('home','App\Http\Controllers\Home\HomeController@index')->name('home');
 Route::get('home/question','App\Http\Controllers\Home\HomeController@question')->name('home.question');
+Route::get('question-detail/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
 
 Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::post('question','App\Http\Controllers\Student\StudentController@createQuestion');
@@ -54,31 +55,33 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
     Route::post('create/requite/service/{id}','App\Http\Controllers\Student\ServiceController@createRequiteService')->name('student.requite.service');
 
-    Route::get('messenger','App\Http\Controllers\Student\MessengerController@messenger');
-    Route::post('reply/messenger','App\Http\Controllers\Student\MessengerController@replyMessenger');
+    Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger');
+    Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply');
 });
 
 
-Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
-    Route::get('question','QuestionController@index')->name('admin.question');
-    Route::post('question/reply/{id}','QuestionController@questionReply');
-    Route::get('question/get/reply/{id}','QuestionController@getQuestionReply');
-    Route::get('create/question','QuestionController@createQuestion')->name('question.create');
-    Route::post('save/question','QuestionController@saveQuestion')->name('question.save');
-    Route::get('change/type/question/{id}','QuestionController@changeTypeQuestion')->name('question.change.type');
-    Route::post('edit/question/{id}','QuestionController@editQuestion')->name('question.edit');
-
+Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
+    Route::prefix('question')->name('question.')->group(function () {
+        Route::get('','QuestionController@index');
+        Route::post('reply/{id}','QuestionController@reply')->name('reply');
+        Route::get('get/reply/{id}','QuestionController@getQuestionReply')->name('get.reply');
+        Route::get('create','QuestionController@create')->name('create');
+        Route::post('save','QuestionController@save')->name('save');
+        Route::get('change/type/{id}','QuestionController@changeType')->name('change.type');
+        Route::post('edit/{id}','QuestionController@edit')->name('edit');
+    });
     Route::prefix('messengers')->name('messengers.')->group(function () {
         Route::get('','MessengerController@index')->name('index');
         Route::get('/{tendangnhap}','MessengerController@detail')->name('detail');
         Route::post('reply/{tendangnhap}','MessengerController@reply')->name('reply');
     });
-
-    Route::get('service','ServiceController@index')->name('service.index');
-    Route::get('create/service','ServiceController@createService');
-    Route::post('save/service','ServiceController@saveService')->name('service.save');
-    Route::get('{id}/edit','ServiceController@editService')->name('service.edit');
-    Route::put('{id}/update','ServiceController@updateService')->name('service.update');
+    Route::prefix('service')->name('service.')->group(function () {
+        Route::get('','ServiceController@index')->name('index');
+        Route::get('create','ServiceController@create')->name('create');
+        Route::post('save','ServiceController@save')->name('save');
+        Route::get('{id}/edit','ServiceController@edit')->name('edit');
+        Route::put('{id}/update','ServiceController@update')->name('update');
+    });
 
     Route::get('/edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
     Route::get('/edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');

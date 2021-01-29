@@ -7,7 +7,7 @@ use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class   StudentController extends Controller
+class StudentController extends Controller
 {
     public function createQuestion(Request $request)
     {

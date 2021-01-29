@@ -8,6 +8,7 @@
             <li class="breadcrumb-item" aria-current="page">Quản lý tin nhắn</li>
         </ol>
     </div>
+    <hr class="sidebar-divider badge-light">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 col-xl-12 chat-messenger">
@@ -24,11 +25,10 @@
                         <ul class="contacts">
                             @foreach($listUserTos as $user)
                                 <li class="active">
-                                    <a href="{{ route('messengers.detail', $user->user_to) }}">
+                                    <a href="{{ route('admin.messengers.detail', $user->user_to) }}">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
                                                 <img src="{{asset('images/1.png')}}">
-                                                <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
                                                 @php

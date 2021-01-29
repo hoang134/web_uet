@@ -15,22 +15,18 @@ class ServiceController extends Controller
 
     public function index()
     {
-
         $listServices = Service::all();
         return view('admin.service.index', [
             'listServices' => $listServices
         ]);
-
-        return view('admin.service.index');
-
     }
 
-    public function createService()
+    public function create()
     {
         return view('admin.service.create');
     }
 
-    public function saveService(Request $request)
+    public function save(Request $request)
     {
 
         DB::beginTransaction();
@@ -54,19 +50,19 @@ class ServiceController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('service.index')->with('success', 'Success');
+            return redirect()->route('admin.service.index')->with('success', 'Success');
         } catch (\Exception $exception) {
             DB::rollBack();
-            return redirect()->route('service.index')->with('error', 'Error');
+            return redirect()->route('admin.service.index')->with('error', 'Error');
         }
     }
 
-    public function editService()
+    public function edit()
     {
         // todo editService
     }
 
-    public function updateService()
+    public function update()
     {
         // todo updateService
     }
@@ -80,7 +76,7 @@ class ServiceController extends Controller
 //        ]);
 //    }
 
-    public function SaveConfigService(Request $request)
+    public function SaveConfig(Request $request)
     {
         //dd($request->all());
         $fields = new Fields();
@@ -115,17 +111,17 @@ class ServiceController extends Controller
         ]);
     }
 
-    public function detailStudentService(Request $request)
-    {
-        $service = new Service();
-        $service->name = $request->name;
-        $service->fee = $request->fee;
-        $service->save();
-    }
+//    public function detailStudentService(Request $request)
+//    {
+//        $service = new Service();
+//        $service->name = $request->name;
+//        $service->fee = $request->fee;
+//        $service->save();
+//    }
 
-    public function configService(Request $request)
-
-    {
-
-    }
+//    public function configService(Request $request)
+//
+//    {
+//
+//    }
 }

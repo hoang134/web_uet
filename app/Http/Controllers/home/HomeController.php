@@ -23,4 +23,14 @@ class HomeController extends Controller
             'questions'=> $questions
         ]);
     }
+
+    public function question_detail($id) {
+        $question = DB::table('questions')->where('questions.id',$id)->get();
+        $question_detail = DB::table('question_replies')
+        ->where('question_replies.question_id',$id)
+        ->get();
+        return view('home.question.question-detail',[
+            'question' => $question,
+            'question_detail' => $question_detail]);
+    }
 }

@@ -1,5 +1,32 @@
 @extends('dashboard')
 @section('content')
+
+<!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-1.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome to CET</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-2.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome to CET</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
 <!-- Women Banner Section Begin -->
     <section class="women-banner spad" style="background-color: white;">
         <div class="container-fluid">
@@ -67,13 +94,15 @@
         <div class="container">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-                    <h2>Thông tin trung tâm</h2>
+                    <h2>Chức năng nhiệm vụ</h2>
                 </div>
                 
                 <div>
-                    
-                        <!--  -->
-                    
+                     @foreach($infomation_home as $infomation_home_value)
+                    <?php 
+                    echo $infomation_home_value->content;
+                    ?>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -91,7 +120,6 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($home_infomation as $home_infomation_value)
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
                         <img src="images/latest-1.jpg" alt="">
@@ -99,17 +127,62 @@
                             <div class="tag-list">
                                 <div class="tag-item">
                                     <i class="fa fa-calendar-o"></i>
-                                    Hạn đăng ký:{{$home_infomation_value->Handangky}}
+                                    20/1/2020
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    5
                                 </div>
                             </div>
                             <a href="#">
-                                <h4>{{$home_infomation_value->TenKythi}}</h4>
+                                <h4>Tiêu đề 1</h4>
                             </a>
-                            <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{$home_infomation_value->Mota}}</p>
+                            <p>Nội dung 1</p>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <img src="images/latest-2.jpg" alt="">
+                        <div class="latest-text">
+                            <div class="tag-list">
+                                <div class="tag-item">
+                                    <i class="fa fa-calendar-o"></i>
+                                    20/1/2020
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    5
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h4>Tiêu đề 2</h4>
+                            </a>
+                            <p>Nội dung 2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-latest-blog">
+                        <img src="images/latest-3.jpg" alt="">
+                        <div class="latest-text">
+                            <div class="tag-list">
+                                <div class="tag-item">
+                                    <i class="fa fa-calendar-o"></i>
+                                    20/1/2020
+                                </div>
+                                <div class="tag-item">
+                                    <i class="fa fa-comment-o"></i>
+                                    5
+                                </div>
+                            </div>
+                            <a href="#">
+                                <h4>Tiêu đề 3</h4>
+                            </a>
+                            <p>Nội dung 3</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

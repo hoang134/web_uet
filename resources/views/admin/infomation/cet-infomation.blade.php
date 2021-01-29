@@ -1,16 +1,17 @@
 @extends('admin.layout')
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Cập nhật thông tin trung tâm</h1>
+    <h1 class="h3 mb-0 text-white">Cập nhật thông tin trung tâm</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Chỉnh sửa thông tin</li>
       <li class="breadcrumb-item" aria-current="page">Thông tin trung tâm</li>
     </ol>
 </div>
-<form action="/admin/save-infomation" method="post">
+<hr class="sidebar-divider badge-light">
+<form action="{{route('admin.save.infomation')}}" method="post">
     @csrf
-    <input type="textarea" style="width: 100%;height: 100%;" name="noidung"></input>
+    <textarea style="width: 100%;height: 100%;" name="noidung"></textarea>
     <button type="submit">Cập nhật</button>
 </form>
 @endsection
