@@ -56,6 +56,9 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
     Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger');
     Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply');
+
+    Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index');
+    Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('xacnhandiemthi.store');
 });
 
 
@@ -81,6 +84,9 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::get('{id}/edit','ServiceController@edit')->name('edit');
         Route::put('{id}/update','ServiceController@update')->name('update');
     });
+
+    Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
+    Route::get('xacnhandiemthi/handle/{tendangnhap}','CetXacNhanDiemThiController@handle')->name('xacnhandiemthi.handle');
 
     Route::get('/edit-infomation','InfomationController@edit_infomation')->name('edit.infomation');
     Route::get('/edit-infomation-cocau','InfomationController@edit_infomation_cocau')->name('edit.infomation.cocau');
