@@ -10,18 +10,26 @@ use App\Models\Cet;
 class CetInfomationController extends Controller
 {
     public function cet_infomation_home() {
-        $home_infomation = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        $infomation_home = DB::table('cet_infomation')->select('content')->orderBy('id','desc')->limit(1)->get();
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
         return view('user.cet-infomation.cet-home',[
-            'home_infomation'=>$home_infomation]);
+            'infomation_home'=>$infomation_home,
+            'infomation_kythi' => $infomation_kythi]);
     }
 
     public function cet_infomation_cocau() {
-        //$cet_infomation = DB::table('cet_infomation')->orderBy('id','desc')->limit(1)->get();
-        return view('user.cet-infomation.cet-cocau');
+        $infomation_cocau = DB::table('cet_infomation')->select('content2')->orderBy('id','desc')->limit(1)->get();
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        return view('user.cet-infomation.cet-cocau',[
+            'infomation_cocau' => $infomation_cocau,
+            'infomation_kythi' => $infomation_kythi]);
     }
 
     public function cet_infomation_chucnang() {
-        $cet_infomation = DB::table('cet_infomation')->orderBy('id','desc')->limit(1)->get();
-        return view('user.cet-infomation.cet-chucnang');
+        $infomation_home = DB::table('cet_infomation')->select('content3')->orderBy('id','desc')->limit(1)->get();
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
+        return view('user.cet-infomation.cet-chucnang',[
+            'infomation_home'=>$infomation_home,
+            'infomation_kythi' => $infomation_kythi]);
     }
 }

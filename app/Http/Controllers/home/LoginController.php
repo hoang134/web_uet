@@ -37,6 +37,10 @@ class LoginController extends Controller
         }
     }
 
+    public function register() {
+        return view('user.auth.register');
+    }
+
     public function username()
     {
         return 'username';

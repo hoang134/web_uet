@@ -41,11 +41,12 @@ Route::get('cet-infomation-chucnang','App\Http\Controllers\Home\CetInfomationCon
 //Thông tin về các kỳ thi,sự kiện
 Route::get('cet-notification-events','App\Http\Controllers\Home\CetNotificationController@cet_notification_events')->name('cet.notification.event');
 Route::get('cet-notification-exams','App\Http\Controllers\Home\CetNotificationController@cet_notification_exams')->name('cet.notification.exam');
-Route::get('cet-notification-exam-detail/{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
+Route::get('cet-notification-exam-detail/ma-ky-thi-{Makythi}','App\Http\Controllers\Home\CetNotificationController@cet_notification_exam_detail')->name('cet.notification.exam.detail');
 
 //
 Route::get('home','App\Http\Controllers\Home\HomeController@index')->name('home');
 Route::get('home/question','App\Http\Controllers\Home\HomeController@question')->name('home.question');
+Route::get('question-detail/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
 
 Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::post('question','App\Http\Controllers\Student\StudentController@createQuestion');

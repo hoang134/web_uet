@@ -37,28 +37,16 @@ class InfomationController extends Controller
 
     public function save_infomation(Request $request) {
         if(isset($request->noidung)) {
-            $cet_infomation = Cet::find(1);
-            $cet_infomation->content = $request->noidung;
-            $cet_infomation->save();
-            return redirect()->route('edit.infomation')->with('success','Cập nhật thành công.');
+            DB::select("update cet_infomation set content = '$request->noidung' where id=1");
+            return redirect()->route('admin.edit.infomation')->with('success','Cập nhật thành công.');
         }
-        if(isset($request->noidung1)) {
-            $cet_infomation = Cet::find(1);
-            $cet_infomation->content2 = $request->noidung1;
-            $cet_infomation->save();
-            return redirect()->route('edit.infomation.cocau')->with('success','Cập nhật thành công.');
+        if(isset($request->noidung1)) { 
+            DB::select("update cet_infomation set content2 = '$request->noidung1' where id=1");
+            return redirect()->route('admin.edit.infomation.cocau')->with('success','Cập nhật thành công.');
         }
         if(isset($request->noidung2)) {
-            $cet_infomation = Cet::find(1);
-            $cet_infomation->content3 = $request->noidung2;
-            $cet_infomation->save();
-            return redirect()->route('edit.infomation.chucnang')->with('success','Cập nhật thành công.');
-        }
-        if(isset($request->noidung3)) {
-            $cet_infomation = Cet::find(1);
-            $cet_infomation->logo = $request->noidung3;
-            $cet_infomation->save();
-            return redirect()->route('edit.infomation.chucnang')->with('success','Cập nhật thành công.');
+            DB::select("update cet_infomation set content3 = '$request->noidung2' where id=1");
+            return redirect()->route('admin.edit.infomation.chucnang')->with('success','Cập nhật thành công.');
         }
     }
 }

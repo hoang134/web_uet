@@ -1,7 +1,15 @@
 @extends('admin.layout')
 @section('content')
-    <h3>Danh sách dịch vụ</h3>
-    <a class="btn btn-success mt-3" href="{{route('admin.service.create')}}">Tạo dịch vụ</a>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-white">Dịch vụ</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+            <li class="breadcrumb-item" aria-current="page">Dịch vụ</li>
+            <li class="breadcrumb-item" aria-current="page">Quản lý dịch vụ</li>
+        </ol>
+    </div>
+    <hr class="sidebar-divider badge-light">
+    <h3 class="text-white">Danh sách dịch vụ</h3>
 
     <table class="table table-striped mt-5">
         <thead>

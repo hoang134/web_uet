@@ -1,5 +1,32 @@
 @extends('dashboard')
 @section('content')
+
+<!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-1.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome to CET</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-2.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome to CET</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
 <!-- Women Banner Section Begin -->
     <section class="women-banner spad" style="background-color: white;">
         <div class="container-fluid">
@@ -67,13 +94,15 @@
         <div class="container">
             <div class="col-lg-12">
                 <div class="section-title text-center">
-                    <h2>Cơ cấu tổ chức</h2>
+                    <h2>Chức năng nhiệm vụ</h2>
                 </div>
                 
                 <div>
-                    
-                        
-                    
+                     @foreach($infomation_cocau as $infomation_cocau_value)
+                    <?php 
+                    echo $infomation_cocau_value->content2;
+                    ?>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -148,33 +148,6 @@
     </header>
     <!-- Header End -->
 
-    <!-- Hero Section Begin -->
-    <section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-1.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <h1>Welcome to CET</h1>
-                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-2.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <h1>Welcome to CET</h1>
-                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-
     @yield('content')
 
     <!-- Partner Logo Section Begin -->
@@ -308,6 +281,27 @@
     </footer>
     <!-- Footer Section End -->
 
+    <ul class="giuseart-pc-contact-bar">
+        <li class="facebook">
+            <a href="" target="_blank" rel="nofollow"></a>
+        </li>
+        <li class="zalo">
+            <a href="" target="_blank" rel="nofollow"></a>
+        </li>
+    </ul>
+     
+    <ul class="giuseart-mobile-contact-bar">
+        <li class="facebook">
+            <a href="" target="_blank" rel="nofollow"></a>
+        </li>
+        <li class="zalo">
+            <a href="" target="_blank" rel="nofollow"></a>
+        </li>
+        <li class="hotline">
+            <a href="" target="_blank" rel="nofollow"></a>
+        </li>
+    </ul>
+
     <!-- Js Plugins -->
     <script src="{{asset('js/libs3/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/libs3/jquery-ui.min.js')}}"></script>
@@ -318,6 +312,7 @@
     <script src="{{asset('js/libs3/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/libs3/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/libs3/main.js')}}"></script>
+    <script src="{{asset('js/libs3/chatmessenger.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('script')
 

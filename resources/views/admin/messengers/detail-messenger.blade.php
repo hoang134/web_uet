@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <div class="container-fluid">
+    <div class="">
         <div class="row">
             <div class="col-md-12 col-xl-12 chat-messenger">
                 <div class="card">
@@ -8,21 +8,10 @@
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
                                 <img src="{{asset('/images/1.png')}}">
-                                <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
-                                <span>Chat with {{\Illuminate\Support\Facades\Auth::user()->Hoten}}</span>
-                                <p>1767 Messages</p>
+                                <span>{{\Illuminate\Support\Facades\Auth::user()->Hoten}}</span>
                             </div>
-                        </div>
-                        <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
-                        <div class="action_menu">
-                            <ul>
-                                <li><i class="fas fa-user-circle"></i> View profile</li>
-                                <li><i class="fas fa-users"></i> Add to close friends</li>
-                                <li><i class="fas fa-plus"></i> Add to group</li>
-                                <li><i class="fas fa-ban"></i> Block</li>
-                            </ul>
                         </div>
                     </div>
                     <div class="card-body msg_card_body">

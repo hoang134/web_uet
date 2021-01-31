@@ -74,12 +74,8 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
             <h6 class="collapse-header">Quản lý câu hỏi</h6>
+            <a class="collapse-item" href="{{route('admin.question.create')}}">Thêm câu hỏi chung</a>
             <a class="collapse-item" href="/admin/question">Quản lý câu hỏi</a>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="dropdowns.html">Dropdowns</a>
-            <a class="collapse-item" href="modals.html">Modals</a>
-            <a class="collapse-item" href="popovers.html">Popovers</a>
-            <a class="collapse-item" href="progress-bar.html">Progress Bars</a>
           </div>
         </div>
       </li>
@@ -93,7 +89,6 @@
           <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
             <h6 class="collapse-header">Quản lý tin nhắn</h6>
             <a class="collapse-item" href="/admin/messengers">Quản lý tin nhắn</a>
-            <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
           </div>
         </div>
       </li>
@@ -101,47 +96,15 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
           aria-controls="collapseTable">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span>
+          <span>Dịch vụ</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Tables</h6>
-            <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
-            <a class="collapse-item" href="datatables.html">DataTables</a>
+            <h6 class="collapse-header">Dịch vụ</h6>
+            <a class="collapse-item" href="/admin/service/create">Thêm dịch vụ</a>
+            <a class="collapse-item" href="/admin/service">Quản lý dịch vụ</a>
           </div>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="ui-colors.html">
-          <i class="fas fa-fw fa-palette"></i>
-          <span>UI Colors</span>
-        </a>
-      </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Examples
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
-          aria-controls="collapsePage">
-          <i class="fas fa-fw fa-columns"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Example Pages</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span>
-        </a>
       </li>
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>

@@ -2,13 +2,14 @@
 @section('title', 'Thêm câu hỏi')
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Cập nhật thông tin trung tâm</h1>
+    <h1 class="h3 mb-0 text-white">Cập nhật thông tin trung tâm</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
     </ol>
 </div>
+<hr class="sidebar-divider badge-light">
 <div class="col-lg-12 mb-4">
     <div class="col-sm-3 com-w3ls">
         <a href="{{route('admin.question.create')}}"><h4>Tạo câu hỏi</h4></a>
@@ -16,10 +17,10 @@
   <!-- Simple Tables -->
   <div class="card">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">Trả lời câu hỏi</h6>
+      <h4 class="m-0 font-weight-bold text-white">Trả lời câu hỏi</h4>
     </div>
     <header class="panel-heading wht-bg">
-        <h4 class="gen-case">Trả lời câu hỏi
+        <h4 class="gen-case">
             <form action="#" class="pull-right mail-src-position">
                 <div class="input-append">
                     <input type="text" class="form-control " placeholder="Search Mail">
