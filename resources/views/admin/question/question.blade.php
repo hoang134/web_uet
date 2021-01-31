@@ -11,9 +11,6 @@
 </div>
 <hr class="sidebar-divider badge-light">
 <div class="col-lg-12 mb-4">
-    <div class="col-sm-3 com-w3ls">
-        <a href="{{route('admin.question.create')}}"><h4>Tạo câu hỏi</h4></a>
-    </div>
   <!-- Simple Tables -->
   <div class="card">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
