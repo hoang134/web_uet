@@ -18,9 +18,11 @@
     </div>
     <header class="panel-heading wht-bg">
         <h4 class="gen-case">
-            <form action="#" class="pull-right mail-src-position">
+            <form action="{{ route('admin.question.search') }}" class="pull-right mail-src-position" method="post">
+                @csrf
                 <div class="input-append">
-                    <input type="text" class="form-control " placeholder="Search Mail">
+                    <input type="text" name ="keySearch"class="form-control " placeholder="Tìm câu hỏi">
+                    <button type="submit" class="btn-success">Tìm kiếm</button>
                 </div>
             </form>
         </h4>

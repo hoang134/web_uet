@@ -104,5 +104,14 @@ class QuestionController extends Controller
         $question->content = $request->question;
         $question->save();
     }
+
+    public function search(Request $request)
+    {
+        $questions = DB::table('questions')->orderBy('created_at','desc')->where('content','like','%'.$request->keySearch.'%')->get();
+        //dd($questions->first()->id);
+        return view('admin.question.question',[
+            'questions'=>$questions
+        ]);
+    }
 }
 

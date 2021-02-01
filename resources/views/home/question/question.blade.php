@@ -7,7 +7,15 @@
             <div class="section-title text-center">
                 <h2>Diễn đàn trao đổi</h2>
             </div>
-
+            <div>
+                <h3>Đặt câu hỏi</h3>
+                <form action="{{ route('student.question.create') }}" method="post">
+                    @csrf
+                    <input type="text" name="question">
+                        <button type="submit">Gửi</button>
+                    </input>
+                </form>
+            </div>
             <table class="table">
                 <tr class="badge-light">
                     <th width="60%">Câu hỏi</th>

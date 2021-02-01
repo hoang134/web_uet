@@ -49,7 +49,7 @@ Route::get('home/question','App\Http\Controllers\Home\HomeController@question')-
 Route::get('question-detail/{id}','App\Http\Controllers\Home\HomeController@question_detail')->name('question.detail');
 
 Route::prefix('student')->middleware('CheckLogin')->group(function (){
-    Route::post('question','App\Http\Controllers\Student\StudentController@createQuestion');
+    Route::post('question/create','App\Http\Controllers\Student\StudentController@createQuestion')->name('student.question.create');
     Route::get('my/question','App\Http\Controllers\Student\StudentController@myQuestion')->name('student.my.question');
 
     Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
@@ -72,6 +72,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::post('save','QuestionController@save')->name('save');
         Route::get('change/type/{id}','QuestionController@changeType')->name('change.type');
         Route::post('edit/{id}','QuestionController@edit')->name('edit');
+        Route::post('search','QuestionController@search')->name('search');
     });
     Route::prefix('messengers')->name('messengers.')->group(function () {
         Route::get('','MessengerController@index')->name('index');
