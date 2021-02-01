@@ -120,16 +120,16 @@
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class=""><a href="/cet-home">Trang chủ</a>
+                        <li class=""><a href="{{route('cet.home')}}">Trang chủ</a>
                         	<ul class="dropdown">
-                                <li><a href="/cet-infomation-cocau">Cơ cấu tổ chức</a></li>
-                                <li><a href="/cet-infomation-chucnang">Chức năng và nhiệm vụ</a></li>
+                                <li><a href="{{route('cet.cocau')}}">Cơ cấu tổ chức</a></li>
+                                <li><a href="{{route('cet.chucnang')}}">Chức năng và nhiệm vụ</a></li>
                             </ul>
                         </li>
                         <li><a href="">Tin tức</a>
                             <ul class="dropdown">
-                                <li><a href="/cet-notification-events">Các sự kiện</a></li>
-                                <li><a href="/cet-notification-exams">Các kỳ thi</a></li>
+                                <li><a href="{{route('cet.notification.event')}}">Các sự kiện</a></li>
+                                <li><a href="{{route('cet.notification.exam')}}">Các kỳ thi</a></li>
                             </ul>
                         </li>
                         <li><a href="">Đăng ký thi</a></li>
