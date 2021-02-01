@@ -55,8 +55,8 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
     Route::get('service','App\Http\Controllers\Student\ServiceController@index')->name('student.service');
     Route::post('create/requite/service/{id}','App\Http\Controllers\Student\ServiceController@createRequiteService')->name('student.requite.service');
 
-    Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger');
-    Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply');
+    Route::get('messengers','App\Http\Controllers\Student\MessengerController@messenger')->name('student.messengers');
+    Route::post('messengers/reply','App\Http\Controllers\Student\MessengerController@reply')->name('student.messengers.reply');
 
     Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index');
     Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('xacnhandiemthi.store');
@@ -65,9 +65,9 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
 Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')->middleware('CheckLogin')->middleware('auth:admin')->group(function () {
     Route::prefix('question')->name('question.')->group(function () {
-        Route::get('','QuestionController@index');
+        Route::get('','QuestionController@index')->name('index');
         Route::post('reply/{id}','QuestionController@reply')->name('reply');
-        Route::get('get/reply/{id}','QuestionController@getQuestionReply')->name('get.reply');
+        Route::get('reply/{id}','QuestionController@getQuestionReply');
         Route::get('create','QuestionController@create')->name('create');
         Route::post('save','QuestionController@save')->name('save');
         Route::get('change/type/{id}','QuestionController@changeType')->name('change.type');

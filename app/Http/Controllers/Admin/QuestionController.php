@@ -79,7 +79,7 @@ class QuestionController extends Controller
         $questionReply->content = $request->questionReply;
         $questionReply->save();
 
-        return redirect()->route('admin.question');
+        return redirect()->route('admin.question.index');
 
     }
 

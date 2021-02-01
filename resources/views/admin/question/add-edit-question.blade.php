@@ -4,7 +4,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-white">Câu hỏi</h1>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
       <li class="breadcrumb-item" aria-current="page">Thêm câu hỏi</li>
     </ol>
@@ -15,7 +15,7 @@
         @if(isset($question)) Sửa câu hỏi @else Thêm câu hỏi  @endif
     </div>
     <br>
-    <form action="{{isset($question)? route("question.save",['id'=>$question->id]):route('admin.question.save')}}" method="post">
+    <form action="{{ route("admin.question.save") }}" method="post">
         @csrf
 
         <div class="form-group row">

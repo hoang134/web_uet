@@ -82,8 +82,8 @@
                       </div>
                     </li>
                     @else
-                    <a href="/login" class="login-panel"><i class="fa fa-user"></i>Đăng nhập  </a>
-                    <a href="/register" class="login-panel" style="margin-right:10px;"><i class="fa fa-user"></i>Đăng ký  </a>
+                    <a href="{{route('login')}}" class="login-panel"><i class="fa fa-user"></i>Đăng nhập  </a>
+                    <a href="{{route('register')}}" class="login-panel" style="margin-right:10px;"><i class="fa fa-user"></i>Đăng ký  </a>
                     @endif
                 </div>
             </div>
@@ -135,11 +135,11 @@
                         <li><a href="">Đăng ký thi</a></li>
                         <li><a href="">Diễn đàn trao đổi</a>
                              <ul class="dropdown">
-                                <li><a href="/home/question">Trao đổi chung</a></li>
-                                <li><a href="/student/my/question">Trao đổi riêng</a></li>
+                                <li><a href="{{route('home.question')}}">Trao đổi chung</a></li>
+                                <li><a href="{{route('student.my.question')}}">Trao đổi riêng</a></li>
                             </ul>
                         </li>
-                        <li><a href="/student/messengers">Tin nhắn</a></li>
+                        <li><a href="{{route('student.messengers')}}">Tin nhắn</a></li>
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
@@ -289,7 +289,7 @@
             <a href="" target="_blank" rel="nofollow"></a>
         </li>
     </ul>
-     
+
     <ul class="giuseart-mobile-contact-bar">
         <li class="facebook">
             <a href="" target="_blank" rel="nofollow"></a>

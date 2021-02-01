@@ -8,7 +8,7 @@
 <body>
 	<p>{{ $details['password'] }}</p>
 	<p>{{ $details['verify_code'] }}</p>
-	<a href="http://127.0.0.1:8000/verify?code={{$details['verify_code']}}">Click here</a>
+	<a href="{{ route('register.verify.user', ['code' => $details['verify_code']]) }}">Click here</a>
 	<p>Thank you.</p>
 </body>
 </html>

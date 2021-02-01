@@ -4,7 +4,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-white">Cập nhật thông tin trung tâm</h1>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
     </ol>
@@ -111,11 +111,14 @@
 
 @section('script')
 <script>
+    var questionReplyUrl = '{{ route('admin.question.reply', ':id') }}'
+    var questionChangeTypeUrl = '{{ route('admin.question.change.type', ':id') }}'
+    var questionEditTypeUrl = '{{ route('admin.question.edit', ':id') }}'
 
     function getData(id) {
         $.ajax({
             type:'GET',
-            url:"/admin/question/get/reply/" + id,
+            url: questionReplyUrl.replace(':id', id),
             success: function (data) {
                 $('.question-'+id).html(data);
                 $('.input-'+id).val('');
@@ -136,8 +139,8 @@
 
         $.ajax({
             type:'POST',
-            url:"/admin/question/reply/" + idQestion,
-            data:$("#form-"+idQestion).serialize(),
+            url: questionReplyUrl.replace(':id', idQestion),
+            data: $("#form-"+idQestion).serialize(),
             success: function () {
                 getData(idQestion);
             }
@@ -147,7 +150,7 @@
             idQestion = $(this).data('id');
             $.ajax({
                 type:'GET',
-                url:"/admin/question/change/type/" + idQestion ,
+                url: questionChangeTypeUrl.replace(':id', idQestion),
                 success:function () {
                     getData(idQestion);
                 }
@@ -160,7 +163,7 @@
     $('.save-data').click(function () {
         $.ajax({
             type:'POST',
-            url:"/admin/question/save/"+idQestion,
+            url: questionEditTypeUrl.replace(':id', idQestion),
             data:$('#form-modal').serialize(),
             success:function () {
                 getData(idQestion);

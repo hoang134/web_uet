@@ -3,7 +3,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-white">Cập nhật thông tin trung tâm</h1>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Chỉnh sửa thông tin</li>
       <li class="breadcrumb-item" aria-current="page">Cơ cấu,tổ chức</li>
     </ol>
@@ -16,7 +16,7 @@
 </form>
 @endsection
 
-@section('script') 
+@section('script')
 <script type="text/javascript">
     CKEDITOR.replace( 'noidung1', {
         filebrowserBrowseUrl: '{{ asset('css/ckeditor/ckfinder/ckfinder.html') }}',

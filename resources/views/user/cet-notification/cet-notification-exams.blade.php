@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row" style="background-color: white;">
             <div class="col-lg-12 col-md-12">
                 @foreach($exams as $exam)
@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-lg-12 col-md-6">
                             <div class="latest-text">
-                                <a href="/cet-notification-exam-detail/ma-ky-thi-{{$exam->MaKythi}}">
+                                <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}">
                                     <h4>{{$exam->TenKythi}} - {{$exam->MaKythi}}</h4>
                                 </a>
                                 <div class="tag-list">

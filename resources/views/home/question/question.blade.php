@@ -18,7 +18,7 @@
                 <tr>
                     <td>
                         <div>
-                            <a href="/question-detail/{{$question->id}}" style="color: black">{{$question->content}}</a>
+                            <a href="{{ route('question.detail', $question->id) }}" style="color: black">{{$question->content}}</a>
                         </div>
                         <div class="date">
                             Đăng bởi: {{\App\Models\User::find($question->user_id)->Hoten}}

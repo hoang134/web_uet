@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-body msg_card_body">
                         @foreach($messengers as $messenger)
-                            @if($messenger->belong == \App\Models\Messenger::BELONG_USER)
+                            @if($messenger->belong == \App\Models\Messenger::BELONG_ADMIN)
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
                                         <img src="{{asset('/images/1.png')}}" class="rounded-circle user_img_msg">
@@ -74,13 +74,15 @@
 @endsection
 @section('script')
     <script>
+        var studentMessengersReply = '{{ route('student.messengers.reply') }}'
+
         $(document).ready(function () {
             $('#submit').click(function (e) {
                 e.preventDefault();
                 let idUser =$(this).data('id');
                 $.ajax({
                     type:"POST",
-                    url:"/student/messengers/reply",
+                    url: studentMessengersReply,
                     data:$('#Form-data').serialize(),
                     success:function (data) {
                         $('#newMessenger').append(data);

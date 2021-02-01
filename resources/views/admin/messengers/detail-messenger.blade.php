@@ -64,13 +64,16 @@
 @endsection
 @section('script')
     <script>
+        var replyMessUrl = '{{ route('admin.messengers.reply', ':tendangnhap') }}'
+
         $(document).ready(function () {
             $('#submit').click(function (e) {
                 e.preventDefault();
-                let userFrom =$(this).data('user');
+                let userFrom = $(this).data('user');
+                let url = replyMessUrl.replace(':tendangnhap', userFrom)
                 $.ajax({
                     type:"POST",
-                    url:"/admin/messengers/reply/"+userFrom,
+                    url: url,
                     data:$('#Form-data').serialize(),
                     success:function (data){
                         $('#newMessenger').append(data);
