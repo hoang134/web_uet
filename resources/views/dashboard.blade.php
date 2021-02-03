@@ -9,40 +9,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trang khảo thí Đại học Quốc gia Hà Nội</title>
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link href="{{asset('css/fontawesome/css/all.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('css/libs3/themify-icons.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/elegant-icons.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/owl.carousel.min.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/nice-select.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/jquery-ui.min.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/slicknav.min.css')}}" type="text/css">
-<link rel="stylesheet" href="{{asset('css/libs3/style.css')}}" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="{{asset('css/fontawesome/css/all.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/libs3/themify-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/nice-select.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/libs3/style.css')}}" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    @yield('style')
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
+    
     <header class="header-section">
         <div class="header-top">
             <div class="container">
@@ -132,7 +121,11 @@
                                 <li><a href="{{route('cet.notification.exam')}}">Các kỳ thi</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Đăng ký thi</a></li>
+                        <li><a href="">Đăng ký thi</a>
+                            <ul class="dropdown">
+                                <li><a href="cet_DangkyHS.php">Nhập hồ sơ</a></li>
+                            </ul>
+                        </li>
                         <li><a href="">Diễn đàn trao đổi</a>
                              <ul class="dropdown">
                                 <li><a href="{{route('home.question')}}">Trao đổi chung</a></li>
@@ -312,7 +305,6 @@
     <script src="{{asset('js/libs3/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/libs3/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/libs3/main.js')}}"></script>
-    <script src="{{asset('js/libs3/chatmessenger.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('script')
 

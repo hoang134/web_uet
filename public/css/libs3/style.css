@@ -4662,6 +4662,7 @@ ol {
 	.single-banner {
 		margin-bottom: 30px;
 	}
+    
 	.women-banner {
 		padding-right: 0;
 		padding-left: 0;
@@ -4716,6 +4717,10 @@ ol {
 	.header-top .ht-right .login-panel {
 		padding-left: 10px;
 	}
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
 	.header-top .ht-right .top-social {
 		padding-right: 10px;
 	}
@@ -4945,6 +4950,10 @@ ol {
 	.instagram-photo .insta-item {
 		width: 100%;
 	}
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
 	.inner-header .advanced-search .category-btn {
 		display: none;
 	}

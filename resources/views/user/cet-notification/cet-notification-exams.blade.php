@@ -1,4 +1,5 @@
 @extends('dashboard')
+
 @section('content')
 <section class="latest-blog spad">
     <div class="container">
@@ -15,10 +16,10 @@
                 @foreach($exams as $exam)
                 <div class="" style="margin:5px;padding: 5px;border-bottom: 1px solid white;">
                     <div class="single-latest-blog col-lg-12" style="display: inline-block;">
-                        <div class="col-lg-4 col-md-6" style="float: left;">
+                        <div class="col-lg-4 col-md-6 col-sm-6" style="float: left;">
                             <img src="images/thong-bao.png" alt="">
                         </div>
-                        <div class="col-lg-12 col-md-6">
+                        <div class="col-lg-12 col-md-6 col-sm-6">
                             <div class="latest-text">
                                 <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}">
                                     <h4>{{$exam->TenKythi}} - {{$exam->MaKythi}}</h4>

@@ -21,7 +21,9 @@ class LoginController extends Controller
         if(auth()->attempt($credentials))
         {
             if(Auth::user()->Trangthai == 1) {
-                return redirect()->route('home')->with('success','Đăng nhập thành công.');
+                $username_cookie = cookie('username_cookie', Auth::user()->tendangnhap, time()+(15));
+                $password_cookie = cookie('username_cookie', Auth::user()->password, time()+(15));
+                return redirect()->route('home')->with('username_cookie',$username_cookie)->with('password_cookie',$password_cookie)->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }

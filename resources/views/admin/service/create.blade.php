@@ -27,8 +27,8 @@
             </div>
         </div>
 
-        <div class="field-list">
-            <div class="field-item card mt-3" data-field-index="0">
+        <div class="field-list mt-5">
+            <div class="field-item badge-dark mt-3" data-field-index="0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title text-white">Field</h5>
