@@ -123,7 +123,13 @@
                         </li>
                         <li><a href="">Đăng ký thi</a>
                             <ul class="dropdown">
-                                <li><a href="cet_DangkyHS.php">Nhập hồ sơ</a></li>
+                                @if(Cookie::get('username_cookie')!="" && Cookie::get('password_cookie')!="")
+                                <li><a href="Khaothi/cet_DangkyHS.php">Nhập hồ sơ</a></li>
+                                @endif
+                                <?php
+                                echo Cookie::get('username_cookie');
+                                echo encrypt_password(Cookie::get('password_cookie'));
+                                ?>
                             </ul>
                         </li>
                         <li><a href="">Diễn đàn trao đổi</a>

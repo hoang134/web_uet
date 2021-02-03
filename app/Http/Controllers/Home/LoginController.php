@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Home\CookieController;
 
 class LoginController extends Controller
 {
@@ -21,9 +22,10 @@ class LoginController extends Controller
         if(auth()->attempt($credentials))
         {
             if(Auth::user()->Trangthai == 1) {
-                $username_cookie = cookie('username_cookie', Auth::user()->tendangnhap, time()+(15));
-                $password_cookie = cookie('username_cookie', Auth::user()->password, time()+(15));
-                return redirect()->route('home')->with('username_cookie',$username_cookie)->with('password_cookie',$password_cookie)->with('success','Đăng nhập thành công.');
+                return redirect()->route('home')
+                ->withCookie(cookie('username_cookie', Auth::user()->tendangnhap,time()+(15*60)))
+                ->withCookie(cookie('password_cookie', Auth::user()->password, time()+(15*60)))
+                ->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }
@@ -39,9 +41,6 @@ class LoginController extends Controller
         }
     }
 
-    public function register() {
-        return view('user.auth.register');
-    }
 
     public function username()
     {
