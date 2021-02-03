@@ -1,24 +1,30 @@
 @extends('admin.layout')
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0">Cập nhật thông tin trung tâm</h1>
+    <h1 class="h3 mb-0">Cập nhật thông báo</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
-      <li class="breadcrumb-item" aria-current="page">Chỉnh sửa thông tin</li>
-      <li class="breadcrumb-item" aria-current="page">Thông tin trung tâm</li>
+      <li class="breadcrumb-item" aria-current="page">Chỉnh sửa thông báo</li>
+      <li class="breadcrumb-item" aria-current="page">Thêm sự kiện</li>
     </ol>
 </div>
 <hr class="sidebar-divider badge-light">
-<form action="{{route('admin.save.infomation')}}" method="post">
+<form action="{{route('admin.save.notification')}}" method="post">
     @csrf
-    <textarea style="width: 100%;height: 100%;" name="noidung"></textarea>
+    Tiêu đề:<input type="text" class="form-control" name="title">
+    <br>
+    Thời gian bắt đầu:<input type="date" class="form-control" name="timestart">
+    <br>
+    Thời gian kết thúc:<input type="date" class="form-control" name="timeend">
+    <br>
+    Nội dung:<textarea style="width: 100%;height: 100%;" name="addevent"></textarea>
     <button type="submit">Cập nhật</button>
 </form>
 @endsection
 
 @section('script')
 <script type="text/javascript">
-    CKEDITOR.replace( 'noidung', {
+    CKEDITOR.replace( 'addevent', {
         filebrowserBrowseUrl: '{{ asset('css/ckeditor/ckfinder/ckfinder.html') }}',
         filebrowserImageBrowseUrl: '{{ asset('css/ckeditor/ckfinder/ckfinder.html?type=Images') }}',
         filebrowserFlashBrowseUrl: '{{ asset('css/ckeditor/ckfinder/ckfinder.html?type=Flash') }}',

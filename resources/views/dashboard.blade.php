@@ -128,7 +128,7 @@
                                 @endif
                                 <?php
                                 echo Cookie::get('username_cookie');
-                                echo encrypt_password(Cookie::get('password_cookie'));
+                                echo (Cookie::get('password_cookie'));
                                 ?>
                             </ul>
                         </li>
@@ -163,49 +163,49 @@
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                    <img src="{{('/images/doitac/uet_logo.png')}}" alt="" />
+	                    <img src="{{asset('/images/doitac/uet_logo.png')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/DHKHTN_logo.png')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/DHKHTN_logo.png')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/ussh_logo.png')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/ussh_logo.png')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/ulis.png')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/ulis.png')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/dhkt.jpg')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/dhkt.jpg')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/khoa_luat.jpg')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/khoa_luat.jpg')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/dhtnmt.png')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/dhtnmt.png')}}" alt="" />
 	                </div>
                 </div>
 
                 <div class="logo-item">
                     <div class="tablecell-inner">
-	                     <img src="{{('/images/doitac/dhvinh.jpg')}}" alt="" />
+	                     <img src="{{asset('/images/doitac/dhvinh.jpg')}}" alt="" />
 	                </div>
                 </div>
             </div>

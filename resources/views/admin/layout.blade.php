@@ -56,12 +56,19 @@
           <span>Chỉnh sửa thông tin</span>
         </a>
         <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Chỉnh sửa thông tin</h6>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Chỉnh sửa thông tin</h4>
             <a class="collapse-item" href="{{ route('admin.edit.logo') }}">Logo</a>
             <a class="collapse-item" href="{{ route('admin.edit.infomation') }}">Thông tin trung tâm</a>
             <a class="collapse-item" href="{{ route('admin.edit.infomation.cocau') }}">Cơ cấu,tổ chức</a>
             <a class="collapse-item" href="{{ route('admin.edit.infomation.chucnang') }}">Chức năng,nhiệm vụ</a>
+          </div>
+        </div>
+        <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Chỉnh sửa thông báo</h4>
+            <a class="collapse-item" href="{{ route('admin.add.notification') }}">Thêm sự kiện</a>
+            <a class="collapse-item" href="{{ route('admin.all.notification') }}">Tất cả sự kiện</a>
           </div>
         </div>
       </li>
@@ -72,8 +79,8 @@
           <span>Quản lý câu hỏi</span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Quản lý câu hỏi</h6>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Quản lý câu hỏi</h4>
             <a class="collapse-item" href="{{route('admin.question.create')}}">Thêm câu hỏi chung</a>
             <a class="collapse-item" href="{{ route('admin.question.index') }}">Quản lý câu hỏi</a>
           </div>
@@ -86,8 +93,8 @@
           <span>Quản lý tin nhắn</span>
         </a>
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Quản lý tin nhắn</h6>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Quản lý tin nhắn</h4>
             <a class="collapse-item" href="{{ route('admin.messengers.index') }}">Quản lý tin nhắn</a>
           </div>
         </div>
@@ -99,8 +106,8 @@
           <span>Dịch vụ</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Dịch vụ</h6>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Dịch vụ</h4>
             <a class="collapse-item" href="{{ route('admin.service.create') }}">Thêm dịch vụ</a>
             <a class="collapse-item" href="{{ route('admin.service.index') }}">Quản lý dịch vụ</a>
           </div>
@@ -110,7 +117,7 @@
       <div class="version" id="version-ruangadmin"></div>
     </ul>
     <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column" style="background-color: #6c757d;">
+    <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f2f2f2;">
       <div id="content">
         <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
