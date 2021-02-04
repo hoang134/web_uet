@@ -103,6 +103,7 @@
             <h6 class="collapse-header">Dịch vụ</h6>
             <a class="collapse-item" href="{{ route('admin.service.create') }}">Thêm dịch vụ</a>
             <a class="collapse-item" href="{{ route('admin.service.index') }}">Quản lý dịch vụ</a>
+            <a class="collapse-item" href="{{ route('admin.service.list.register') }}">Danh sách đăng ký</a>
           </div>
         </div>
       </li>
@@ -204,11 +205,14 @@
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-@if(Session::has('success'))
-    <script type="text/javascript">
-        toastr.success("{!!Session::get('success')!!}");
-    </script>
-@endif
+<script type="text/javascript">
+    @if(session('success'))
+        toastr.success('{{ session('success') }}');
+    @endif
+    @if(session('error'))
+        toastr.error('{{ session('error') }}');
+    @endif
+</script>
 @yield('script')
 </body>
 

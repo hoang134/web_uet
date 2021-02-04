@@ -1,5 +1,8 @@
 @extends('admin.layout')
 
+@section('style')
+    <link rel="stylesheet" href="{{ asset('/css/admin/service/create.css') }}">
+@endsection
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-white">Thêm dịch vụ</h1>
@@ -14,16 +17,16 @@
     <form class="mt-5" action="{{ route('admin.service.save') }}" method="post">
         @csrf
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label text-white">Name</label>
+            <label for="name" class="col-sm-2 col-form-label text-white">Tên dịch vụ</label>
             <div class="col-sm-8 col-lg-6">
-                <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+                <input type="text" class="form-control" id="name" placeholder="Tên dịch vụ" name="name">
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="fee" class="col-sm-2 col-form-label text-white">Fee</label>
+            <label for="fee" class="col-sm-2 col-form-label text-white">Giá</label>
             <div class="col-sm-8 col-lg-6">
-                <input type="number" class="form-control" id="fee" placeholder="Fee" name="fee">
+                <input type="number" class="form-control" id="fee" placeholder="Giá" name="fee">
             </div>
         </div>
 
@@ -31,13 +34,13 @@
             <div class="field-item card mt-3" data-field-index="0">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-title text-white">Field</h5>
+                        <h5 class="card-title text-white">Trường</h5>
                         <i class="delete-field fa fa-trash-alt cursor-pointer"></i>
                     </div>
                     <div class="form-group row">
-                        <label for="name1" class="col-sm-2 col-form-label text-white">Name</label>
+                        <label for="name1" class="col-sm-2 col-form-label text-white">Tên</label>
                         <div class="col-sm-8 col-lg-6">
-                            <input type="text" class="form-control" id="name1" placeholder="Name" name="fields[0][name]">
+                            <input type="text" class="form-control" id="name1" placeholder="Tên" name="fields[0][name]">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -122,5 +125,5 @@
     </form>
 @endsection
 @section('script')
-    <script src="/js/admin/service/create.js"></script>
+    <script src="{{ asset('/js/admin/service/create.js') }}"></script>
 @endsection
