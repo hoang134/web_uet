@@ -20,18 +20,13 @@ class LoginController extends Controller
     public function login( Request $request)
     {
         $credentials = $request->only(['Email', 'password']);
-
-        $user = User::where('Email',$request->Email)->where('password',$request->password)->first();
-        $admin = Admin::where('Email',$request->Email)->where('password',$request->password)->first();
-
-        if($user)
+        if(auth()->attempt($credentials))
         {
-            Auth::login($user);
             if(Auth::user()->Trangthai == 1) {
-                return redirect()->route('home')
-                ->withCookie(cookie('username_cookie', Auth::user()->tendangnhap,time()+(15*60)))
-                ->withCookie(cookie('password_cookie', Auth::user()->password, time()+(15*60)))
-                ->with('success','Đăng nhập thành công.');
+                setcookie('username_cookie',Auth::user()->tendangnhap,time()+1000);
+                setcookie('password_cookie',Auth::user()->password,time()+1000);
+
+                return redirect()->route('home')->with('success','Đăng nhập thành công.');
             } else {
                 return redirect()->route('login')->with('error','Tài khoản chưa được xác nhận.');
             }
@@ -47,6 +42,9 @@ class LoginController extends Controller
         }
     }
 
+    public function register() {
+        return view('user.auth.register');
+    }
 
     public function username()
     {
@@ -55,11 +53,15 @@ class LoginController extends Controller
 
     public function logout()
     {
+        setcookie('username_cookie','',time()+1000);
+        setcookie('password_cookie','',time()+1000);
         Auth::logout();
         return redirect()->route('home');
     }
     public function logout_admin()
     {
+        setcookie('username_cookie','',time()+1000);
+        setcookie('password_cookie','',time()+1000);
         auth()->guard()->logout();
         return redirect()->route('home');
     }
