@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Home\CookieController;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -19,8 +20,13 @@ class LoginController extends Controller
     public function login( Request $request)
     {
         $credentials = $request->only(['Email', 'password']);
-        if(auth()->attempt($credentials))
+
+        $user = User::where('Email',$request->Email)->where('password',$request->password)->first();
+        $admin = Admin::where('Email',$request->Email)->where('password',$request->password)->first();
+
+        if($user)
         {
+            Auth::login($user);
             if(Auth::user()->Trangthai == 1) {
                 return redirect()->route('home')
                 ->withCookie(cookie('username_cookie', Auth::user()->tendangnhap,time()+(15*60)))
