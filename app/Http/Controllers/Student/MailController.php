@@ -19,6 +19,7 @@ class MailController extends Controller
     public function sendEmail(Request $request) {
         $verify_code = $this->string_random(60);
         $user = new User();
+        $user->id = '0';
         $user->Hoten = $request->name;
         $user->tendangnhap = $request->username;
         $user->Email = $request->Email;
@@ -38,7 +39,7 @@ class MailController extends Controller
     	$verify_code = \Illuminate\Support\Facades\Request::get('code');
     	$user = DB::table('cet_student_acc')->where('verify',$verify_code)->first();
     	if($user!=null && $user->Trangthai!=1) {
-    		DB::select('update cet_student_acc set Trangthai = "1" where verify = "$verify_code"');
+    		DB::select("update cet_student_acc set Trangthai = '1' where verify = '$verify_code'");
     		return redirect()->route('login')->with('success','Bạn đã xác thực thành công.');
     	}
     	else {

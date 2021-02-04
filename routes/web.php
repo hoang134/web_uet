@@ -98,6 +98,11 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
     Route::get('/edit-infomation-logo','InfomationController@edit_infomation_logo')->name('edit.logo');
     Route::post('/save-infomation','InfomationController@save_infomation')->name('save.infomation');
 
+    Route::get('/add-notification','NotificationController@add_event')->name('add.notification');
+    Route::post('/save-notification','NotificationController@save_event')->name('save.notification');
+    Route::get('/all-notification','NotificationController@index')->name('all.notification');
+
+
 });
 Route::get('clear-cache-all', function() {
     Artisan::call('cache:clear');

@@ -27,6 +27,26 @@
         </div>
     </section>
     <!-- Hero Section End -->
+
+<section class="man-banner spad">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
+                        <h2>Men’s</h2>
+                        <a href="#">Discover More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
 <!-- Women Banner Section Begin -->
     <section class="women-banner spad" style="background-color: white;">
         <div class="container-fluid">

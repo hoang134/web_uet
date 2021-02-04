@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserService extends Model
 {
     use HasFactory;
-    const FEE_PAID ='paid';
-    const FEE_UNPAID ='unpaid';
-    const STATUS_COMPLETE ='complete';
-    const STATUS_INCOMPLETE ='incomplete';
+    const FEE_PAID ='Đã thanh toán';
+    const FEE_UNPAID ='Chưa thanh toán';
+    const STATUS_COMPLETE ='Hoàn thành';
+    const STATUS_INCOMPLETE ='Chưa hoàn thành';
 
     public function user()
     {

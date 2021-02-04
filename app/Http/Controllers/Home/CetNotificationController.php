@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 class CetNotificationController extends Controller
 {
     public function cet_notification_events() {
-        return view('user.cet-notification.cet-notification-events');
+        $events = DB::table('cet_event')->simplePaginate(5);
+        return view('user.cet-notification.cet-notification-events',[
+            'events' => $events]);
     }
 
     public function cet_notification_events_details($id) {
