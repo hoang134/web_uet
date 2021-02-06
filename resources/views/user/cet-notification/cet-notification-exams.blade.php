@@ -1,40 +1,35 @@
 @extends('dashboard')
 
 @section('content')
-<section class="latest-blog spad">
+<section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Thông tin các kỳ thi</h2>
-                </div>
-            </div>
-        </div>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-list clearfix">
+                        @foreach($exams as $exam)
+                        <div class="blog-box row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="post-media">
+                                    <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}" title="">
+                                        <img src="images/thong-bao.png" alt="" class="img-fluid">
+                                        <div class="hovereffect"></div>
+                                    </a>
+                                </div><!-- end media -->
+                            </div><!-- end col -->
 
-        <div class="row" style="background-color: white;">
-            <div class="col-lg-12 col-md-12">
-                @foreach($exams as $exam)
-                <div class="" style="margin:5px;padding: 5px;border-bottom: 1px solid white;">
-                    <div class="single-latest-blog col-lg-12" style="display: inline-block;">
-                        <div class="col-lg-4 col-md-6 col-sm-6" style="float: left;">
-                            <img src="images/thong-bao.png" alt="">
-                        </div>
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <div class="latest-text">
-                                <a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}">
-                                    <h4>{{$exam->TenKythi}} - {{$exam->MaKythi}}</h4>
-                                </a>
-                                <div class="tag-list">
-                                    <div class="tag-item">
-                                        <i class="fa fa-calendar-o"></i>
-                                        Hạn đăng ký:{{$exam->Handangky}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <div class="blog-meta big-meta col-md-6 col-lg-6">
+                                <h4><a href="{{ route('cet.notification.exam.detail', $exam->MaKythi) }}" title="">{{$exam->TenKythi}} - {{$exam->MaKythi}}</a></h4>
+                                <p>{{$exam->Mota}}</p>
+                                <small class="firstsmall">{{$exam->Handangky}}</small>
+                                
+                            </div><!-- end meta -->
+                        </div><!-- end blog-box -->
+
+                        <hr class="invis">
+                        @endforeach
                     </div>
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
