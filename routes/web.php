@@ -87,6 +87,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::put('{id}/update','ServiceController@update')->name('update');
         Route::get('list/register','ServiceController@lisRegister')->name('list.register');
         Route::get('handle/{id}','ServiceController@handle')->name('handle');
+        Route::get('download/file/{id}','ServiceController@downloadFile')->name('download.file');
     });
 
     Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
