@@ -24,12 +24,12 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
-                    <form action="{{route('login')}}"  method="post">
+                    <form action="{{route('send.forgotpassword')}}"  method="post">
                         @csrf
                         <center>
                           <div class="mb-3">
                             <div class="">
-                              <h2 style="font-size: 30px;color:#007f49; ">TRANG ĐĂNG NHẬP</h2>
+                              <h2 style="font-size: 30px;color:#007f49; ">Lấy lại mật khẩu</h2>
                             </div>
                           </div>
                         </center>
@@ -37,23 +37,11 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="Email" class="form-control input_user" value="" placeholder="Tên đăng nhập">
+                            <input type="text" name="Email" class="form-control input_user" value="" placeholder="Nhập email">
                         </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" name="password" class="form-control input_pass" value="" placeholder="Mật khẩu">
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                <label class="custom-control-label" for="customControlInline">Nhớ mật khẩu</label>
-                            </div>
-                        </div>
-                            <div class="d-flex justify-content-center mt-3 login_container">
-                    <button type="submit" name="login" class="btn login_btn">Đăng nhập</button>
-                   </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="login" class="btn login_btn">Gửi</button>
+                       </div>
                     </form>
                 </div>
         
@@ -62,7 +50,7 @@
                         Bạn chưa có tài khoản? <a href="{{route('register')}}" class="ml-2">Đăng ký</a>
                     </div>
                     <div class="d-flex justify-content-center links">
-                        <a href="{{route('forgotpassword')}}">Quên mật khẩu?</a>
+                        <a href="{{route('login')}}">Đăng nhập</a>
                     </div>
                 </div>
             </div>

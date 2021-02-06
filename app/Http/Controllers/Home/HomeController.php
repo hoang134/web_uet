@@ -12,6 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        $infomation_kythi = DB::table('cet_kythi')->orderBy('Handangky','desc')->limit(3)->get();
         return view('dashboard');
     }
 

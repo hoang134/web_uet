@@ -46,6 +46,10 @@ class LoginController extends Controller
         return view('user.auth.register');
     }
 
+    public function forgot_password() {
+        return view('user.auth.forgot-password');
+    }
+
     public function username()
     {
         return 'username';

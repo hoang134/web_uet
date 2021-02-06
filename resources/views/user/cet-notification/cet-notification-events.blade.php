@@ -1,46 +1,41 @@
 @extends('dashboard')
 @section('content')
-<section class="latest-blog spad">
+
+<section class="section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2>Thông tin các sự kiện</h2>
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-list clearfix">
+                        @foreach($events as $event)
+                        <div class="blog-box row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="post-media">
+                                    <a href="" title="">
+                                        <img src="images/thong-bao.png" alt="" class="img-fluid">
+                                        <div class="hovereffect"></div>
+                                    </a>
+                                </div><!-- end media -->
+                            </div><!-- end col -->
+
+                            <div class="blog-meta big-meta col-md-6 col-lg-6">
+                                <h4><a href="" title="">{{$event->title}}</a></h4>
+                                <p>{{$event->content}}</p>
+                                <small class="firstsmall">{{$event->timestart}}-{{$event->timeend}}</small>
+                                
+                            </div><!-- end meta -->
+                        </div><!-- end blog-box -->
+
+                        <hr class="invis">
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                @foreach($events as $event)
-                    <div class="single-latest-blog col-lg-12" style="display: inline-block;">
-                        <div class="col-lg-4 col-md-6 col-sm-6" style="float: left;">
-                            <img src="images/thong-bao.png" alt="">
-                        </div>
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <div class="latest-text">
-                                <a href="">
-                                    <h4>{{$event->title}}</h4>
-                                </a>
-                                <div class="tag-list">
-                                    <div class="tag-item">
-                                        <i class="fa fa-calendar-o"></i>
-                                        Thời gian bắt đầu:{{$event->timestart}}<br>
-                                        Thời gian kết thúc:{{$event->timeend}}
-                                    </div>
-                                    <div>
-                                        <p>{{$event->content}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
     </div>
-    <div style="padding: 5px;margin:5px;">
+     <div style="padding: 5px;margin:5px;">
         <center>{!! $events->links() !!}</center>
     </div>
 </section>
+
 @endsection

@@ -62,6 +62,10 @@
                           <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                           Đổi mật khẩu<u></u>
                         </a>
+                        <a class="dropdown-item" href="#">
+                          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Cập nhật hồ sơ thi<u></u>
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('logout')}}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?')">
                           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -124,11 +128,8 @@
                             <ul class="dropdown">
                                 @if(Cookie::get('username_cookie')!="" && Cookie::get('password_cookie')!="")
                                 <li><a href="Khaothi/cet_DangkyHS.php">Nhập hồ sơ</a></li>
+                                <li><a href="">Thi thử</a></li>
                                 @endif
-                                <?php
-                                 echo Cookie::get('username_cookie');
-                                 echo Cookie::get('password_cookie');
-                                ?>
                             </ul>
                         </li>
                         <li><a href="">Diễn đàn trao đổi</a>
@@ -146,7 +147,48 @@
     </header>
     <!-- Header End -->
 
-    @yield('content')
+    <section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-1.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-hero-items set-bg" data-setbg="{{asset('images/hero-2.jpg')}}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <h1>Welcome</h1>
+                            <p>Chào mừng bạn đến với trang khảo thí Đại học Quốc gia Hà Nội</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section single-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            @yield('content')
+                        </div><!-- end page-wrapper -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+                            @yield('new_content')
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
 
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">

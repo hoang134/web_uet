@@ -33,6 +33,9 @@ Route::get('register','App\Http\Controllers\Home\LoginController@register')->nam
 Route::post('verify-register','App\Http\Controllers\Student\MailController@sendEmail')->name('register.verify');
 Route::get('/verify','App\Http\Controllers\Student\MailController@verifyUser')->name('register.verify.user');
 
+Route::get('/forgot-password','App\Http\Controllers\Home\LoginController@forgot_password')->name('forgotpassword');
+Route::post('verify-forgot-password','App\Http\Controllers\Student\MailController@send_forgot_password')->name('send.forgotpassword');
+
 //Thông tin về trung tâm
 Route::get('cet-home','App\Http\Controllers\Home\CetInfomationController@cet_infomation_home')->name('cet.home');
 Route::get('cet-infomation-cocau','App\Http\Controllers\Home\CetInfomationController@cet_infomation_cocau')->name('cet.cocau');
