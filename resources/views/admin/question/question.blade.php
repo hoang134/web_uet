@@ -46,7 +46,7 @@
             <td style="width: 100px;">
                 <i class="fa fa-star" style="{{$question->questionReply == null? "color:blue":""}}"></i>
             </td>
-            <td>{{$question->user->name}}</td>
+            <td>{{ $question->user->Hoten }}</td>
             <td>
                 <a  class="content-question" data-id ="{{$question->id}}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                     <p style="width: 35vh;color: blue;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height: 5vh;">

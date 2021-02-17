@@ -63,6 +63,13 @@ Route::prefix('student')->middleware('CheckLogin')->group(function (){
 
     Route::get('xacnhandiemthi','App\Http\Controllers\Student\CetXacNhanDiemThiController@index');
     Route::post('xacnhandiemthi/store','App\Http\Controllers\Student\CetXacNhanDiemThiController@store')->name('xacnhandiemthi.store');
+
+    Route::get('list/register/exam','App\Http\Controllers\Student\StudentController@listExam')->name('student.list.exam');
+    Route::get('infor/register/exam/{id}','App\Http\Controllers\Student\StudentController@inforRegisterExam')->name('student.infor.exam');
+
+    Route::get('payment','App\Http\Controllers\Student\StudentController@payment')->name('student.payment');
+    Route::post('payment','App\Http\Controllers\Student\StudentController@paymentStore')->name('student.payment.store');
+
 });
 
 
@@ -91,6 +98,7 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
         Route::get('list/register','ServiceController@lisRegister')->name('list.register');
         Route::get('handle/{id}','ServiceController@handle')->name('handle');
         Route::get('download/file/{id}','ServiceController@downloadFile')->name('download.file');
+        Route::get('export/file/{id}','ServiceController@exportFile')->name('export.file');
     });
 
     Route::get('xacnhandiemthi','CetXacNhanDiemThiController@index');
@@ -108,8 +116,14 @@ Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin.')-
 
 
 });
-Route::get('clear-cache-all', function() {
+    Route::get('clear-cache-all', function() {
     Artisan::call('cache:clear');
 
     dd("Cache Clear All");
+});
+Route::get('qrcode', function () {
+
+    return QrCode::size(250)
+        ->backgroundColor(255, 255, 204)
+        ->generate('Thông tin');
 });

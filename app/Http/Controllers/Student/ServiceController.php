@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ServiceController extends Controller
 {
@@ -56,9 +57,13 @@ class ServiceController extends Controller
         }
     }
 
-    private function handleFile($file)
+    public function handleFile($file)
     {
-        // todo file
-        return '';
+        $nameFile = Carbon::now()->timestamp . $file->getClientOriginalName();
+
+        Storage::putFileAs('service/student',$file,"$nameFile");
+        return $url = 'service/student/' . $nameFile;
+
+
     }
 }

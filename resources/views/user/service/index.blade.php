@@ -13,7 +13,7 @@
             <div class="tab-content" id="v-pills-tabContent">
                 @foreach($listServices as $service)
                     <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="v-pills-home{{ $service->id }}" role="tabpanel" aria-labelledby="v-pills-home-tab{{ $service->id }}">
-                        <form action="{{ route('student.requite.service', $service->id) }}" method="post" >
+                        <form action="{{ route('student.requite.service', $service->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @foreach($service->fields as $field)
                                 <div class="form-group row">

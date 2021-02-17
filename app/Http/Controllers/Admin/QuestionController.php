@@ -49,7 +49,7 @@ class QuestionController extends Controller
        echo "
             <td class=\"view-message dont-show\">{$question->user->name}</td>
             <td class=\"view-message\"><a  class=\"content-question\" data-id =\"{$question->id}\" data-toggle=\"modal\" data-target=\"#exampleModal\" data-whatever=\"@mdo\">{$question->content}</a></td>
-            <td class=\"view-message\">{$question->type}</td>
+            <td class=\"view-message\"><span class='badge badge-success'>{$question->type}</span></td>
             <td class=\"view-message\">{$questionReply}</td>
             <td class=\"view-message\">
             <button class=\"reply\" data-id='{$question->id}'>trả lời</button>

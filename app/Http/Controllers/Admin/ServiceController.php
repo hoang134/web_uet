@@ -6,10 +6,15 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\Admin\ServiceRequest;
 use App\Models\Fields;
+use App\Models\ResultsFields;
 use App\Models\Service;
 use App\Models\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade as PDF;
+use mysql_xdevapi\Result;
 
 class ServiceController extends Controller
 {
@@ -123,10 +128,41 @@ class ServiceController extends Controller
         $userService = UserService::find($id);
         $student = $userService->user;
         $service = Service::find($userService->service_id);
-        //$service->fields->first()->resultsFeld->content;
         return view('admin.service.handle',[
             'student' => $student,
             'service' => $service,
         ]);
+    }
+
+    public function downloadFile($id)
+    {
+        $url = ResultsFields::find($id)->content;
+        return $contents = Storage::download($url);
+    }
+
+    public function exportFile($id)
+    {
+        $userService = UserService::find($id);
+        $student = $userService->user;
+        $service = Service::find($userService->service_id);
+        $pdf = PDF::loadHTML($this->contentHTML($id));
+        return  view('admin.service.pdf-file',[
+            'student' => $student,
+            'service' => $service,
+            ]);
+       //return $pdf->stream();
+    }
+
+    private function contentHTML($id)
+    {
+        $userService = UserService::find($id);
+        $student = $userService->user;
+        $service = Service::find($userService->service_id);
+        $html =  "
+            <head><meta charset='utf-8''></head>
+            <h3>Xác nhận điểm thi</h3>
+    <lable>Tên học sinh:</lable> $student->Hoten  <br>
+        ";
+        return $html;
     }
 }
