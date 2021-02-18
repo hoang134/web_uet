@@ -2,28 +2,27 @@
 @section('title', 'Thêm câu hỏi')
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-white">Cập nhật thông tin trung tâm</h1>
+    <h1 class="h3 mb-0">Cập nhật thông tin trung tâm</h1>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
       <li class="breadcrumb-item" aria-current="page">Quản lý câu hỏi</li>
     </ol>
 </div>
 <hr class="sidebar-divider badge-light">
 <div class="col-lg-12 mb-4">
-    <div class="col-sm-3 com-w3ls">
-        <a href="{{route('admin.question.create')}}"><h4>Tạo câu hỏi</h4></a>
-    </div>
   <!-- Simple Tables -->
   <div class="card">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h4 class="m-0 font-weight-bold text-white">Trả lời câu hỏi</h4>
+      <h4 class="m-0 font-weight-bold">Trả lời câu hỏi</h4>
     </div>
     <header class="panel-heading wht-bg">
         <h4 class="gen-case">
-            <form action="#" class="pull-right mail-src-position">
+            <form action="{{ route('admin.question.search') }}" class="pull-right mail-src-position" method="post">
+                @csrf
                 <div class="input-append">
-                    <input type="text" class="form-control " placeholder="Search Mail">
+                    <input type="text" name ="keySearch"class="form-control " placeholder="Tìm câu hỏi">
+                    <button type="submit" class="btn-success">Tìm kiếm</button>
                 </div>
             </form>
         </h4>
@@ -47,7 +46,7 @@
             <td style="width: 100px;">
                 <i class="fa fa-star" style="{{$question->questionReply == null? "color:blue":""}}"></i>
             </td>
-            <td>{{$question->user->name}}</td>
+            <td>{{$question->user->Hoten}}</td>
             <td>
                 <a  class="content-question" data-id ="{{$question->id}}" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
                     <p style="width: 35vh;color: blue;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;height: 5vh;">
@@ -114,11 +113,14 @@
 
 @section('script')
 <script>
+    var questionReplyUrl = '{{ route('admin.question.reply', ':id') }}'
+    var questionChangeTypeUrl = '{{ route('admin.question.change.type', ':id') }}'
+    var questionEditTypeUrl = '{{ route('admin.question.edit', ':id') }}'
 
     function getData(id) {
         $.ajax({
             type:'GET',
-            url:"/admin/question/get/reply/" + id,
+            url: questionReplyUrl.replace(':id', id),
             success: function (data) {
                 $('.question-'+id).html(data);
                 $('.input-'+id).val('');
@@ -139,8 +141,8 @@
 
         $.ajax({
             type:'POST',
-            url:"/admin/question/reply/" + idQestion,
-            data:$("#form-"+idQestion).serialize(),
+            url: questionReplyUrl.replace(':id', idQestion),
+            data: $("#form-"+idQestion).serialize(),
             success: function () {
                 getData(idQestion);
             }
@@ -150,7 +152,7 @@
             idQestion = $(this).data('id');
             $.ajax({
                 type:'GET',
-                url:"/admin/question/change/type/" + idQestion ,
+                url: questionChangeTypeUrl.replace(':id', idQestion),
                 success:function () {
                     getData(idQestion);
                 }
@@ -163,7 +165,7 @@
     $('.save-data').click(function () {
         $.ajax({
             type:'POST',
-            url:"/admin/question/save/"+idQestion,
+            url: questionEditTypeUrl.replace(':id', idQestion),
             data:$('#form-modal').serialize(),
             success:function () {
                 getData(idQestion);

@@ -1,9 +1,3 @@
-
-<!------ Include the above in your HEAD tag ---------->
-
-<!DOCTYPE html>
-<html>
-    
 <head>
     <title>Trang đăng nhập</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -12,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/libs3/login.css')}}">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
 </head>
 <!--Coded with love by Mutiullah Samim-->
 <body>
@@ -24,7 +21,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">
-                    <form action="{{route('login')}}"  method="post">
+                    <form id="loginform" action="{{route('login')}}"  method="post">
                         @csrf
                         <center>
                           <div class="mb-3">
@@ -33,18 +30,21 @@
                             </div>
                           </div>
                         </center>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
+                        <div class="input-group mb-2">
+                            <div class=" input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="Email" class="form-control input_user" value="" placeholder="Tên đăng nhập">
-                        </div>
+
+				<input type="text" name="Email" id="Email" autocomplete="Email" class="form-control input_user" value="" placeholder="Tên đăng nhập">
+</div><small><label id="Email-error" class="error" for="Email"></label></small>
+                        
                         <div class="input-group mb-2">
-                            <div class="input-group-append">
+                            <div class=" input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" class="form-control input_pass" value="" placeholder="Mật khẩu">
-                        </div>
+
+				<input type="password" name="password" id="password" autocomplete="current-password" class="form-control input_pass" value="" placeholder="Mật khẩu">
+                        </div><small><label id="password-error" class="error" for="password"></label></small>
                         <div class="form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customControlInline">
@@ -62,14 +62,12 @@
                         Bạn chưa có tài khoản? <a href="{{route('register')}}" class="ml-2">Đăng ký</a>
                     </div>
                     <div class="d-flex justify-content-center links">
-                        <a href="#">Quên mật khẩu?</a>
+                        <a href="{{route('forgotpassword')}}">Quên mật khẩu?</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @if(Session::has('success'))
         <script type="text/javascript">
@@ -81,5 +79,9 @@
             toastr.error("{!!Session::get('error')!!}");
         </script>
     @endif
+
+    <script type="text/javascript" src="{{asset('js/libs3/validate/validate_login.js')}}">
+      
+    </script>
 </body>
 </html>

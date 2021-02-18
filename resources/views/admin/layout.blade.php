@@ -16,7 +16,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
 
-  
+
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -33,7 +33,7 @@
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
         <div class="sidebar-brand-icon">
           <img src="{{asset('images/logo.png')}}">
         </div>
@@ -41,7 +41,7 @@
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Trang chủ</span></a>
       </li>
@@ -56,12 +56,19 @@
           <span>Chỉnh sửa thông tin</span>
         </a>
         <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Chỉnh sửa thông tin</h6>
-            <a class="collapse-item" href="/admin/edit-infomation-logo">Logo</a>
-            <a class="collapse-item" href="/admin/edit-infomation">Thông tin trung tâm</a>
-            <a class="collapse-item" href="/admin/edit-infomation-cocau">Cơ cấu,tổ chức</a>
-            <a class="collapse-item" href="/admin/edit-infomation-chucnang">Chức năng,nhiệm vụ</a>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Chỉnh sửa thông tin</h4>
+            <a class="collapse-item" href="{{ route('admin.edit.logo') }}">Logo</a>
+            <a class="collapse-item" href="{{ route('admin.edit.infomation') }}">Thông tin trung tâm</a>
+            <a class="collapse-item" href="{{ route('admin.edit.infomation.cocau') }}">Cơ cấu,tổ chức</a>
+            <a class="collapse-item" href="{{ route('admin.edit.infomation.chucnang') }}">Chức năng,nhiệm vụ</a>
+          </div>
+        </div>
+        <div id="collapseForm1" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Chỉnh sửa thông báo</h4>
+            <a class="collapse-item" href="{{ route('admin.add.notification') }}">Thêm sự kiện</a>
+            <a class="collapse-item" href="{{ route('admin.all.notification') }}">Tất cả sự kiện</a>
           </div>
         </div>
       </li>
@@ -72,10 +79,10 @@
           <span>Quản lý câu hỏi</span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Quản lý câu hỏi</h6>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Quản lý câu hỏi</h4>
             <a class="collapse-item" href="{{route('admin.question.create')}}">Thêm câu hỏi chung</a>
-            <a class="collapse-item" href="/admin/question">Quản lý câu hỏi</a>
+            <a class="collapse-item" href="{{ route('admin.question.index') }}">Quản lý câu hỏi</a>
           </div>
         </div>
       </li>
@@ -86,9 +93,9 @@
           <span>Quản lý tin nhắn</span>
         </a>
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Quản lý tin nhắn</h6>
-            <a class="collapse-item" href="/admin/messengers">Quản lý tin nhắn</a>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Quản lý tin nhắn</h4>
+            <a class="collapse-item" href="{{ route('admin.messengers.index') }}">Quản lý tin nhắn</a>
           </div>
         </div>
       </li>
@@ -99,10 +106,10 @@
           <span>Dịch vụ</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-          <div class="py-2 collapse-inner rounded" style="background-color: #787986;">
-            <h6 class="collapse-header">Dịch vụ</h6>
-            <a class="collapse-item" href="/admin/service/create">Thêm dịch vụ</a>
-            <a class="collapse-item" href="/admin/service">Quản lý dịch vụ</a>
+          <div class="py-2 collapse-inner rounded">
+            <h4 class="collapse-header">Dịch vụ</h4>
+            <a class="collapse-item" href="{{ route('admin.service.create') }}">Thêm dịch vụ</a>
+            <a class="collapse-item" href="{{ route('admin.service.index') }}">Quản lý dịch vụ</a>
           </div>
         </div>
       </li>
@@ -110,7 +117,7 @@
       <div class="version" id="version-ruangadmin"></div>
     </ul>
     <!-- Sidebar -->
-    <div id="content-wrapper" class="d-flex flex-column" style="background-color: #6c757d;">
+    <div id="content-wrapper" class="d-flex flex-column" style="background-color: #f2f2f2;">
       <div id="content">
         <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
@@ -199,7 +206,7 @@
   <script src="{{asset('js/libs/jquery-easing/jquery.easing.min.js')}}"></script>
   <script src="{{asset('js/libs/ruang-admin.min.js')}}"></script>
   <!-- <script src="{{asset('js/libs/chart.js/Chart.min.js')}}"></script>
-  <script src="{{asset('js/libs/demo/chart-area-demo.js')}}"></script>  --> 
+  <script src="{{asset('js/libs/demo/chart-area-demo.js')}}"></script>  -->
   <script src="{{asset('css/ckeditor/ckeditor.js')}}"></script>
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
