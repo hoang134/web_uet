@@ -14,7 +14,7 @@ class CetXacNhanDiemThiController extends Controller
 {
     public function index()
     {
-        $kythis = DB::table('cet_student_ky_thi')->where('tendangnhap',Auth::user()->tendangnhap)->first();
+        $kythis = DB::table('cet_xac_nhan_diem_thi')->where('tendangnhap',Auth::user()->Email)->first();
         $kythis = json_decode($kythis->makythi);
 
         return view('user.xac-nhan-diem-thi.index',[

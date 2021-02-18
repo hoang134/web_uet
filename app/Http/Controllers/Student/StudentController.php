@@ -26,4 +26,8 @@ class StudentController extends Controller
             'questions'=> $questions
         ]);
     }
+
+    public function test() {
+        return "test";
+    }
 }

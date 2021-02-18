@@ -20,7 +20,16 @@ class Admin extends Authenticatable
     protected $table = 'cet_admin_acc';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        // 'name',
+        // 'email',
+        // 'password',
+        'id',
+        'tendangnhap',
+        'Hoten',
+        'Sodienthoai',
+        'Email',
+        'Trangthai',
+        'password'
     ];
 
     /**
@@ -29,16 +38,12 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'id',
+        'Hoten',
+        'Sodienthoai',
+        'Email',
+        'Trangthai',
+        'password'
     ];
 
     /**

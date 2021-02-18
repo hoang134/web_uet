@@ -79,7 +79,7 @@ class QuestionController extends Controller
         $questionReply->content = $request->questionReply;
         $questionReply->save();
 
-        return redirect()->route('admin.question');
+        return redirect()->route('admin.question.index');
 
     }
 
@@ -103,6 +103,15 @@ class QuestionController extends Controller
         $question = Question::find($request->id);
         $question->content = $request->question;
         $question->save();
+    }
+
+    public function search(Request $request)
+    {
+        $questions = DB::table('questions')->orderBy('created_at','desc')->where('content','like','%'.$request->keySearch.'%')->get();
+        //dd($questions->first()->id);
+        return view('admin.question.question',[
+            'questions'=>$questions
+        ]);
     }
 }
 

@@ -13,5 +13,10 @@ class Fields extends Model
     {
         return $this->belongsTo(Service::class,'service_id','id');
     }
+
+    public function resultsFeld()
+    {
+        return $this->hasOne(ResultsFields::class,'fields_id','id');
+    }
 }
 

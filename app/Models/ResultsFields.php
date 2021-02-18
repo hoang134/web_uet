@@ -14,7 +14,7 @@ class ResultsFields extends Model
         return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function fields()
+    public function field()
     {
         return $this->belongsTo(Fields::class,'fields_id','id');
     }

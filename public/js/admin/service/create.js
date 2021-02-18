@@ -24,7 +24,7 @@ $(function () {
         let val = $(this).val()
         if (val === 'checkbox' || val === 'radio' || val === 'select') {
             // show value
-            currentField.find('.show-value').addClass('card').html(valueFrameHtml(fieldIndex))
+            currentField.find('.show-value').html(valueFrameHtml(fieldIndex))
         } else {
             // hidden value
             currentField.find('.show-value').removeClass('card').text('')
@@ -51,7 +51,7 @@ $(function () {
     })
 
     var fieldItemHtml = (fieldIndex) => {
-        return `<div class="field-item card mt-3" data-field-index="${fieldIndex}">
+        return `<div class="field-item badge-dark mt-3" data-field-index="${fieldIndex}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title text-white">Field</h5>

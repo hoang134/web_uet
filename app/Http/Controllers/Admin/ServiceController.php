@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\Admin\ServiceRequest;
 use App\Models\Fields;
 use App\Models\Service;
 use App\Models\UserService;
@@ -57,24 +58,43 @@ class ServiceController extends Controller
         }
     }
 
-    public function edit()
+    public function edit($id)
     {
-        // todo editService
+        $service = Service::find($id);
+        return view('admin.service.edit', compact('service'));
     }
 
-    public function update()
+    public function update(ServiceRequest $request, $id)
     {
-        // todo updateService
+        DB::beginTransaction();
+        try {
+            $fields = $request->fields;
+
+            $service = Service::find($id);
+            $service->name = $request->name;
+            $service->fee = $request->fee;
+            $service->save();
+
+            $service->fields()->delete();
+
+            foreach ($fields as $item) {
+
+                $field = new Fields();
+                $field->service_id = $service->id;
+                $field->name = $item['name'];
+                $field->type = $item['type'];
+                $field->validate = $item['validate'];
+                $field->value = array_key_exists('values', $item) ? json_encode($item['values']) : '';
+                $field->save();
+            }
+
+            DB::commit();
+            return redirect()->route('admin.service.index')->with('success', 'Success');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('admin.service.index')->with('error', 'Error');
+        }
     }
-//    public function configService(Request $request)
-//    {
-//        $service =Service::find($request->id);
-//        $listFields =  $service->fields;
-//        return view('admin..service.config-service',[
-//            'service'=>$service,
-//            'listFields'=>$listFields
-//        ]);
-//    }
 
     public function SaveConfig(Request $request)
     {
@@ -90,20 +110,7 @@ class ServiceController extends Controller
         $fields->save();
     }
 
-//    public function printFields(Request $request)
-//    {
-//        $service = Service::find($request->id);
-//        $listFields =  $service->fields;
-//
-//
-//        foreach ($listFields as $fields)
-//        {
-//            $name = ($fields->group == null) ?"input-$fields->id" : "$fields->group";
-//            echo "<label>{$fields->name}</label> <input type='{$fields->type}' name='$name'><br>";
-//        }
-//    }
-
-    public function listStudentService()
+    public function lisRegister()
     {
         $listStudentServices = UserService::orderBy('created_at', 'DESC')->get();
         return view('admin.service.list-student-service', [
@@ -111,17 +118,15 @@ class ServiceController extends Controller
         ]);
     }
 
-//    public function detailStudentService(Request $request)
-//    {
-//        $service = new Service();
-//        $service->name = $request->name;
-//        $service->fee = $request->fee;
-//        $service->save();
-//    }
-
-//    public function configService(Request $request)
-//
-//    {
-//
-//    }
+    public function handle($id)
+    {
+        $userService = UserService::find($id);
+        $student = $userService->user;
+        $service = Service::find($userService->service_id);
+        //$service->fields->first()->resultsFeld->content;
+        return view('admin.service.handle',[
+            'student' => $student,
+            'service' => $service,
+        ]);
+    }
 }
