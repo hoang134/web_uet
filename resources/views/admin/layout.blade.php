@@ -15,7 +15,9 @@
   <link href="{{asset('css/libs/ruang-admin.min.css')}}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 
-
+    {{--    PDF--}}
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -110,6 +112,7 @@
             <h4 class="collapse-header">Dịch vụ</h4>
             <a class="collapse-item" href="{{ route('admin.service.create') }}">Thêm dịch vụ</a>
             <a class="collapse-item" href="{{ route('admin.service.index') }}">Quản lý dịch vụ</a>
+            <a class="collapse-item" href="{{ route('admin.service.list.register') }}">Danh sách đăng ký dịch vụ</a>
           </div>
         </div>
       </li>
@@ -211,11 +214,15 @@
   <script src="{{asset('css/ckeditor/ckfinder/ckfinder.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-@if(Session::has('success'))
     <script type="text/javascript">
-        toastr.success("{!!Session::get('success')!!}");
+        @if(session('success'))
+        toastr.success('{{ session('success') }}');
+        @endif
+        @if(session('error'))
+        toastr.error('{{ session('error') }}');
+        @endif
     </script>
-@endif
+
 @yield('script')
 </body>
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCetXacNhanDiemThiTable extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCetXacNhanDiemThiTable extends Migration
      */
     public function up()
     {
-        Schema::create('cet_xac_nhan_diem_thi', function (Blueprint $table) {
+        Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('tendangnhap');
-            $table->string('lydo');
-            $table->string('makythi');
-            $table->string('noinhan');
+            $table->string('name');
+            $table->string('code');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCetXacNhanDiemThiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cet_xac_nhan_diem_thi');
+        Schema::dropIfExists('payment_methods');
     }
 }

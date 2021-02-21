@@ -17,6 +17,7 @@ class CreateCetDichVuTable extends Migration
             $table->id();
             $table->string('tendangnhap');
             $table->string('tendichvu');
+            $table->unsignedBigInteger('dichvu_id');
             $table->enum('trangthaithanhtoan',[\App\Models\CetDichVu::TTCHUATHANHTOAN,\App\Models\CetDichVu::TTDATHANHTOAN]);
             $table->enum('trangthaithuchien',[\App\Models\CetDichVu::TTCHUATHUCHIEN,\App\Models\CetDichVu::TTDATHUCHIEN]);
             $table->timestamps();

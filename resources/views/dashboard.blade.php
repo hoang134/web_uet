@@ -3,9 +3,9 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title>Trang khảo thí</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -18,14 +18,17 @@
     <link rel="stylesheet" href="{{asset('css/libs3/themify-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/elegant-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/libs3/owl.carousel.min.css')}}" type="text/css">
-     
+
     <link href="{{asset('css/libs3/bootstrap.css')}}" rel="stylesheet">
+{{--    <link href="{{asset('css/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">--}}
     <link href="{{asset('css/libs3/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs3/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs3/responsive.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs3/colors.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs3/version/tech.css')}}" rel="stylesheet">
-
+{{--    PDF--}}
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 </head>
 <body style="background-color: #fff;" id="bodyid">
@@ -43,7 +46,7 @@
                         (+84) – 24.66759258  /  (+84) – 24.62532740
                     </div>
                 </div>
-                
+
                 <div class="ht-right">
                     @if(Auth::check())
                     <li class="nav-item dropdown no-arrow" style="background-color: #fff;">
@@ -55,8 +58,16 @@
                       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="{{route('change.infomation')}}">
                           <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                          Thông tin tài khoản
+                            Thông tin tài khoản
                         </a>
+                          <a class="dropdown-item" href="{{route('student.list.exam')}}">
+                              <i class="fa fa-university fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Kỳ thi đã đăng ký
+                          </a>
+                          <a class="dropdown-item" href="{{route('student.xacnhandiemthi')}}">
+                              <i class="fa fa-pencil-square fa-sm fa-fw mr-2 text-gray-400"></i>
+                              Xác nhận điểm thi
+                          </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('logout')}}" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?')">
                           <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -94,7 +105,7 @@
                         <ul class="nav-right">
                             <li class="cart-icon">
                                 <a href="#">
-                                    <i class="icon_bag_alt"></i> Lịch sử 
+                                    <i class="icon_bag_alt"></i> Lịch sử
                                 </a>
                             </li>
                         </ul>
@@ -164,7 +175,7 @@
                             </ul>
                         </li>
                         <li><a href="{{route('student.service')}}">Dịch vụ</a>
-                          
+
                         </li>
 	                    <li><a href="">Thu phí</a></li>
                         @endif
@@ -252,7 +263,7 @@
             </div>
         </div>
     </div>
-    
+
     <footer class="footer-section" id="footerid">
         <div class="container">
             <div class="row">
@@ -321,28 +332,27 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x "><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </div>
 @endif
-    
-</div>
 
-    @yield('script')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{asset('js/libs3/tether.min.js')}}"></script>
     <script src="{{asset('js/libs3/bootstrap.min.js')}}"></script>
+{{--    <script src="{{asset('css/libs/bootstrap/js/bootstrap.min.js')}}"></script>--}}
 
     <script src="{{asset('js/libs3/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/libs3/owl.carousel.min.js')}}"></script>
     <script src="{{asset('js/libs3/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-    @if(Session::has('success'))
-        <script type="text/javascript">
-            toastr.success("{!!Session::get('success')!!}");
-        </script>
-    @endif
-
+    <script type="text/javascript">
+        @if(session('success'))
+        toastr.success('{{ session('success') }}');
+        @endif
+        @if(session('error'))
+        toastr.error('{{ session('error') }}');
+        @endif
+    </script>
     <script>
     $(document).ready(function () {
-        
         $(".chat-bot-icon").click(function (e) {
             $(this).children('img').toggleClass('hide');
             $(this).children('svg').toggleClass('animate');
@@ -363,6 +373,6 @@ function abc() {
 alert("123");
 }
 </script>
-
+@yield('script')
 </body>
 </html>

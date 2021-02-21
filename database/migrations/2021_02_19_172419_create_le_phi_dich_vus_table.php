@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCetXacNhanDiemThiTable extends Migration
+class CreateLePhiDichVusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCetXacNhanDiemThiTable extends Migration
      */
     public function up()
     {
-        Schema::create('cet_xac_nhan_diem_thi', function (Blueprint $table) {
+        Schema::create('le_phi_dich_vus', function (Blueprint $table) {
             $table->id();
-            $table->string('tendangnhap');
-            $table->string('lydo');
-            $table->string('makythi');
-            $table->string('noinhan');
+            $table->string('tendichvu');
+            $table->integer('phidichvu');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCetXacNhanDiemThiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cet_xac_nhan_diem_thi');
+        Schema::dropIfExists('le_phi_dich_vus');
     }
 }
